@@ -1,0 +1,23 @@
+github:
+  prebuilds:
+    master: false
+    branches: false
+tasks:
+  - name: deploy
+    init: docker pull oceanbase/oceanbase-ce
+    command: | 
+          echo "alias sh='/bin/bash'" >> ~/.profile
+          source ~/.profile
+          docker run -p 2881:2881 --name obstandalone -e MINI_MODE=1 -d oceanbase/oceanbase-ce
+          clear
+          bash /workspace/ob-example/tools/scripts/gitpod.sh
+          
+  - name: DB Server
+    command: |
+          cd /workspace/ob-example
+          echo "alias sh='/bin/bash'" >> ~/.profile
+          echo "export GOPATH="/workspace/ob-example/go-go_sql_driver"" >> ~/.profile
+          source ~/.profile
+          clear
+          echo -e "$(< ./tools/scripts/gitpod_welcome)"
+    openMode: split-right
