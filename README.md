@@ -1,7 +1,7 @@
 # ob-example
 Oceanbase build its online platform for fast use based on gitpod, Clike the button to use
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/akaError/ob-example)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/oceanbase/ob-example)
 
 OceanBase will auto deploy a local observer. Please wait until see "Oceanbase boot Success" on the left terminal and try to connect in the right.
 ![示意图](./tools/scripts/gitpod1.png)
@@ -21,7 +21,10 @@ cd python3-pymysql
 sh env.sh
 sh run.sh
 ```
-
+Simple only-read sysbench for fun is also supported in gitpod!
+```
+docker exec -it obstandalone obd test sysbench obcluster
+```
 Refer to the [OceanBase](https://open.oceanbase.com) for more details about OceanBase Database.
 
 
