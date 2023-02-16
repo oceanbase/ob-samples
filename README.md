@@ -27,6 +27,14 @@ docker exec -it obstandalone obd test sysbench obcluster
 ```
 Refer to the [OceanBase](https://open.oceanbase.com) for more details about OceanBase Database.
 
+# Contributors
+- go_sql_driver [@akaError]
+- jdbc [@akaError]
+- pymysql [@akaError]
+- Hibernate
+- MyBatis
+- SprintJDBC
 
+to be add...
 
 
