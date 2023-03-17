@@ -8,7 +8,7 @@ CREATE TABLE prize (
   `type` varchar(60) NOT NULL COMMENT '奖品级别',
   `name` varchar(200) NOT NULL COMMENT '奖品名称',
   `count` bigint NOT NULL COMMENT '奖品个数',
-  `art_name` LONGTEXT NOT NULL COMMENT '奖品骚气展示',
+  `art_name` LONGTEXT NOT NULL COMMENT '奖品ascii-art展示',
   PRIMARY KEY (`id`)
 );
 CREATE UNIQUE INDEX prize_index_name ON prize(`name`);
