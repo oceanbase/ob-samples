@@ -34,7 +34,7 @@ public class MySqlConnectorTest {
         Path sqlPath = Paths.get(workspace, sqlFile);
         try {
             sqlArray = Files.readAllLines(sqlPath).stream().map(String::trim).collect(Collectors.joining("\n"))
-                    .split(";");
+                .split(";");
         } catch (IOException e) {
             System.out.println("Failed to load sql file from " + sqlPath + ", exception: " + e.getMessage());
             return;
