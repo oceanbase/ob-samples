@@ -5,7 +5,7 @@ do
     sleep 5s
 done
 echo -e "\033[32m\nob boot success! use following to connect:\033[0m"
-echo -e "\033[32m connect sys user: docker exec -it obstandalone ob-mysql sys\033[0m"
-echo -e "\033[32m connect root user: docker exec -it obstandalone ob-mysql root\033[0m"
-echo -e "\033[32m connect test user: docker exec -it obstandalone ob-mysql test\033[0m"
+echo -e "\033[32m connect with user root@sys: docker exec -it obstandalone ob-mysql sys\033[0m"
+echo -e "\033[32m connect with user root@test: docker exec -it obstandalone ob-mysql root\033[0m"
+echo -e "\033[32m connect test user test@test: docker exec -it obstandalone ob-mysql test\033[0m"
 
