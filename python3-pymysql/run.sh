@@ -1,2 +1,2 @@
-pip3 install pymysql
+python3 -m pip install -r requirements.txt
 python3 Test.py
