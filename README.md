@@ -13,10 +13,8 @@ Gitpod will Automatically deploy a standalone OceanBase server. Please wait unti
 This repository provides examples for different languages and tools connecting to OceanBase. You can follow the steps below to run the example code directly in the Gitpod environment through `run.sh`.
 
 ```bash
-// enter the working directory 
+// enter the working directory
 cd xxxx
-// prepare environment
-sh env.sh
 // execute the sample code
 sh run.sh
 ```
@@ -25,7 +23,6 @@ Here we use python3-pymysql as an example:
 
 ```bash
 cd python3-pymysql
-sh env.sh
 sh run.sh
 ```
 

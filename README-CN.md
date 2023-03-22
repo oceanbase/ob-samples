@@ -13,10 +13,8 @@
 本仓库提供了不同语言和工具连接 OceanBase 的示例，您可以按下面步骤进行操作，通过 `run.sh` 在 Gitpod 环境直接运行示例代码。
 
 ```bash
-// 进入目录 
+// 进入目录
 cd xxxx
-// 准备环境
-sh env.sh
 // 执行示例代码
 sh run.sh
 ```
@@ -25,7 +23,6 @@ sh run.sh
 
 ```bash
 cd python3-pymysql
-sh env.sh
 sh run.sh
 ```
 
