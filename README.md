@@ -8,9 +8,13 @@ This repo builds an online platform for fast use based on Gitpod, click the foll
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/oceanbase/ob-example)
 
-Gitpod will Automatically deploy a standalone OceanBase server. Please wait until see "ob boot success!" on the left terminal, after that you can try this OceanBase server on the right terminal.
+Note that it is necessary to choose a large-class workspace for OceanBase, otherwise the database may fail to deploy due to insufficient disk space.
 
-![示意图](./tools/scripts/gitpod1.png)
+![workspace](tools/gitpod/new-workspace.png)
+
+Open the newly created workspace, Gitpod will Automatically deploy a standalone OceanBase server. Please wait until the following information about successful deployment appears on the terminal, after that you can try it with our examples.
+
+![demo](tools/gitpod/demo.png)
 
 ### Try with Example Code
 
