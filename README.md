@@ -10,7 +10,7 @@ This repo builds an online platform for fast use based on Gitpod, click the foll
 
 Gitpod will Automatically deploy a standalone OceanBase server. Please wait until see "ob boot success!" on the left terminal, after that you can try this OceanBase server on the right terminal.
 
-![示意图](./tools/scripts/gitpod1.png)
+![示意图](tools/gitpod/gitpod1.png)
 
 ### Try with Example Code
 

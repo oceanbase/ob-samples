@@ -10,7 +10,7 @@
 
 进入 Gitpod 后，在工作区内会自动部署一个 OceanBase 本地实例，请等待左侧终端界面显示 "ob boot success!"，之后您可以在右侧终端进行操作。
 
-![示意图](./tools/scripts/gitpod1.png)
+![示意图](tools/gitpod/gitpod1.png)
 
 ### 使用示例代码
 
