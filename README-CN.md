@@ -8,9 +8,13 @@
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/oceanbase/ob-example)
 
-进入 Gitpod 后，在工作区内会自动部署一个 OceanBase 本地实例，请等待左侧终端界面显示 "ob boot success!"，之后您可以在右侧终端进行操作。
+需要注意的是，创建 Gitpod 工作区时需要选择大规格，否则可能会因为磁盘空间不足而部署失败。
 
-![示意图](tools/gitpod/gitpod1.png)
+![workspace](tools/gitpod/new-workspace.png)
+
+打开新创建的 Gitpod 工作区后，Gitpod 会自动部署一个 OceanBase 本地实例，请耐心等待，直到终端界面显示如下表示部署成功的信息，之后您就可以在工作区使用该 OceanBase 实例了。
+
+![demo](tools/gitpod/demo.png)
 
 ### 使用示例代码
 
