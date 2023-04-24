@@ -20,61 +20,49 @@ Add OceanBase JDBC driver to POM.
 
 When using the OceanBase driver, you need to provide the JDBC Url. Please refer to [OceanBase Connector/J Documentation](https://www.oceanbase.com/docs/oceanbase-connector-j-cn) for details.
 
-Take [OceanBaseClientTest.java](src/main/java/com/oceanbase/example/OceanBaseClientTest.java) code as an example.
+Take [InsertAndSelectExample.java](src/main/java/com/oceanbase/example/InsertAndSelectExample.java) code as an example.
 
 ```java
-public class OceanBaseClientTest {
-    public static void main(String[] args) {
-        String workspace = "/workspace/ob-example";
-        String sqlFile = "tests/sql/test.sql";
-        String tableName = "t_test";
+public class InsertAndSelectExample {
 
-        Properties properties = new Properties();
-        properties.put("user", "root@test");
-        properties.put("password", "");
-        String jdbcUrl = "jdbc:oceanbase://127.0.0.1:2881/test";
+  public static void main(String[] args) throws ClassNotFoundException, SQLException {
+    // connect to your database
+    String url = "jdbc:oceanbase://127.0.0.1:2881/test?characterEncoding=utf-8&useServerPrepStmts=true";
+    String user = "root@test";
+    String password = "";
+    Class.forName("com.oceanbase.jdbc.Driver");
+    Connection conn = DriverManager.getConnection(url, user, password);
 
-        Connection connection;
-        Statement statement;
-        try {
-            connection = DriverManager.getConnection(jdbcUrl, properties);
-            statement = connection.createStatement();
-            System.out.println("Success to connect to OceanBase");
-        } catch (SQLException e) {
-            System.out.println("Failed to connect to OceanBase, exception: " + e.getMessage());
-            return;
-        }
-
-        String selectSql = "SELECT * FROM " + tableName;
-        System.out.println("Query sql: " + selectSql);
-        try {
-            ResultSet rs = statement.executeQuery(selectSql);
-            ResultSetMetaData metaData = rs.getMetaData();
-            System.out.println("Get rows:");
-            int count = 0;
-            while (rs.next()) {
-                System.out.printf("## row %d: { ", count++);
-                for (int i = 0; i < metaData.getColumnCount(); i++) {
-                    System.out.print(metaData.getColumnName(i + 1) + ": " + rs.getObject(i + 1) + "; ");
-                }
-                System.out.println("}");
-            }
-        } catch (SQLException e) {
-            System.out.println("Failed to query table " + tableName + ", exception: " + e.getMessage());
-            return;
-        }
-
-        try {
-            if (statement != null) {
-                statement.close();
-            }
-            if (connection != null) {
-                connection.close();
-            }
-        } catch (SQLException e) {
-            System.out.println("Failed to close statement and connection, exception: " + e.getMessage());
-        }
+    // create a table
+    Statement stmt = conn.createStatement();
+    try {
+      stmt.execute("drop table person");
+    } catch (Exception ignore) {
     }
+    stmt.execute("create table person (name varchar(50), age int)");
+
+    // insert records
+    PreparedStatement ps = conn.prepareStatement("insert into person values(?, ?)");
+    ps.setString(1, "Adam");
+    ps.setInt(2, 28);
+    ps.executeUpdate();
+    ps.setString(1, "Eve");
+    ps.setInt(2, 26);
+    ps.executeUpdate();
+
+    // fetch all records
+    ps = conn.prepareStatement("select * from person", ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+    ResultSet rs = ps.executeQuery();
+    while (rs.next()) {
+      System.out.println(rs.getString(1) + " is " + rs.getInt(2) + " years old.");
+    }
+
+    // release all resources
+    ps.close();
+    stmt.close();
+    conn.close();
+  }
+
 }
 ```
 
