@@ -16,7 +16,7 @@
 
 需要注意的是，创建 Gitpod 工作区时需要选择大规格（`Large` Class），否则可能会因为磁盘空间不足而部署失败。
 
-打开新创建的 Gitpod 工作区后，Gitpod 会自动部署一个 OceanBase 本地实例，请等待终端显示 "OceanBase server boot success!"，之后您可以参考[examples/README-CN.md](examples/README-CN.md)使用我们的示例。
+打开新创建的 Gitpod 工作区后，Gitpod 会自动部署一个 OceanBase 本地实例，请等待终端显示 "OceanBase server boot success!"，之后您可以参考 [examples/README-CN.md](examples/README-CN.md) 使用我们的示例。
 
 ## 贡献
 
