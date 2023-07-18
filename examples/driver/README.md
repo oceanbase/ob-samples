@@ -1,7 +1,5 @@
 # Driver Examples
 
-English | [简体中文](README-CN.md)
-
 This directory contains the example projects of database driver, each of which is named in format `{programming language}-{component name}`.
 
 The driver example projects are as follows:
