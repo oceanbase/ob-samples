@@ -14,9 +14,11 @@
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/oceanbase/ob-example)
 
-需要注意的是，创建 Gitpod 工作区时需要选择大规格（`Large` Class），否则可能会因为磁盘空间不足而部署失败。
+需要注意的是，创建 Gitpod 工作区时需要选择大规格，否则可能会因为磁盘空间不足而部署失败。
 
-打开新创建的 Gitpod 工作区后，Gitpod 会自动部署一个 OceanBase 本地实例，请等待终端显示 "OceanBase server boot success!"，之后您可以参考 [examples/README-CN.md](examples/README-CN.md) 使用我们的示例。
+打开新创建的 Gitpod 工作区后，Gitpod 会自动部署一个 OceanBase 本地实例，请耐心等待，直到终端界面显示如下表示部署成功的信息，之后您就可以参考 [examples/README-CN.md](examples/README-CN.md) 在工作区使用该 OceanBase 实例了。
+
+![Boot Success](tools/gitpod/boot.png)
 
 ## 贡献
 

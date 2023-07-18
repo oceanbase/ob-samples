@@ -14,9 +14,11 @@ This repo builds an online platform for fast use based on Gitpod, click the foll
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/oceanbase/ob-example)
 
-Note that it is necessary to choose a `Large` class workspace for OceanBase, otherwise the database may fail to deploy due to insufficient disk space.
+Note that it is necessary to choose a large-class workspace for OceanBase, otherwise the database may fail to deploy due to insufficient disk space.
 
-Once open the workspace, Gitpod will Automatically deploy a standalone OceanBase server. Please wait until it shows "OceanBase server boot success!" on the terminal, then you can try it with our examples referencing [examples/README.md](examples/README.md).
+Open the newly created workspace, Gitpod will Automatically deploy a standalone OceanBase server. Please wait until the following information about successful deployment appears on the terminal, after that you can try it with our examples referencing [examples/README.md](examples/README.md).
+
+![Boot Success](tools/gitpod/boot.png)
 
 ## Contribution
 
