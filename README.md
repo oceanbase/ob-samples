@@ -2,11 +2,24 @@
 
 English | [简体中文](README-CN.md)
 
+## Introduction
+
 This repository provides the example projects for OceanBase. It contains the following directories:
 
 - [`examples`](examples): the directory contains all the example projects.
 - [`tests`](tests): the directory contains resources for testing.
 - [`tools`](tools): the directory contains scripts and other tools.
+
+### Examples
+
+For now, the repository contains examples for the following components:
+
+#### [Driver](examples/driver)
+
+- (golang) [go-sql-driver](examples/driver/golang-go-sql-driver)
+- (java) [mysql-connector-java](examples/driver/java-mysql-connector-java)
+- (java) [oceanbase-client](examples/driver/java-oceanbase-client)
+- (python3) [pymysql](examples/driver/python3-pymysql)
 
 ## Quick Start
 

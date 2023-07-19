@@ -2,11 +2,24 @@
 
 [English](README.md) | 简体中文
 
+## 介绍
+
 本仓库提供了 OceanBase 的示例项目。 它包含以下目录：
 
 - [`examples`](examples)：该目录包含所有示例项目。
 - [`tests`](tests)：该目录包含用于测试的资源。
 - [`tools`](tools)：该目录包含脚本和其他工具。
+
+### 示例项目
+
+目前，本仓库包含以下示例项目。
+
+#### [数据库驱动](examples/driver)
+
+- (golang) [go-sql-driver](examples/driver/golang-go-sql-driver)
+- (java) [mysql-connector-java](examples/driver/java-mysql-connector-java)
+- (java) [oceanbase-client](examples/driver/java-oceanbase-client)
+- (python3) [pymysql](examples/driver/python3-pymysql)
 
 ## 快速开始
 
