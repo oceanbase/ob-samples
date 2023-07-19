@@ -12,7 +12,16 @@ This repository provides the example projects for OceanBase. It contains the fol
 
 ### Examples
 
-For now, the repository contains examples for the following components:
+The example projects for OceanBase are classified by type as below:
+
+- [`application`](examples/application): example projects for application frameworks such as the web service frameworks.
+- [`connection-pool`](examples/connection-pool): example projects for connection pool tools.
+- [`data-integration`](examples/data-integration): example projects for data integration tools.
+- [`driver`](examples/driver): example projects for database drivers.
+- [`middleware`](examples/middleware): example projects for middlewares.
+- [`orm`](examples/orm): example projects for ORM (Object Relational Mapping) frameworks.
+
+The project directories under these types are named in format `{programming language}-{component name}`. For now, the repository contains examples for the following components:
 
 #### [Driver](examples/driver)
 
@@ -29,9 +38,27 @@ This repo builds an online platform for fast use based on Gitpod, click the foll
 
 Note that it is necessary to choose a large-class workspace for OceanBase, otherwise the database may fail to deploy due to insufficient disk space.
 
-Open the newly created workspace, Gitpod will Automatically deploy a standalone OceanBase server. Please wait until the following information about successful deployment appears on the terminal, after that you can try it with our examples referencing [examples/README.md](examples/README.md).
+Open the newly created workspace, Gitpod will Automatically deploy a standalone OceanBase server. Please wait until the following information about successful deployment appears on the terminal, after that you can try it with our examples.
 
 ![Boot Success](tools/gitpod/boot.png)
+
+### Try with Example Code
+
+You can try the example on Gitpod following the steps below:
+
+```bash
+// enter the working directory
+cd xxxx
+// execute the sample code
+sh run.sh
+```
+
+Here we use python3-pymysql as an example, note that the workspace in Gitpod is set to `/workspace/ob-example`:
+
+```bash
+cd /workspace/ob-example/examples/driver/python3-pymysql
+sh run.sh
+```
 
 ## Contribution
 
