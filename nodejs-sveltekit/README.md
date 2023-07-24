@@ -1,38 +1,34 @@
-# create-svelte
+# Full Stack App with SvelteKit and OceanBase
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+This project demonstrates how to build a fullstack app using SvelteKit for the frontend and OceanBase as the database. The application is a simple Todo app that allows users to create, read, update, and delete tasks.
 
-## Creating a project
+## Technologies Used
 
-If you're seeing this, you've probably already done this step. Congrats!
+- SvelteKit: A framework for building web applications of all sizes.
+- OceanBase: A distributed relational database management system developed by Ant Group.
+- MySQL2: A MySQL driver for Node.js.
+- Tailwind CSS: A utility-first CSS framework for rapidly building custom user interfaces.
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+## Setup
 
-# create a new project in my-app
-npm init svelte@next my-app
-```
+1. Clone the repository to your local machine.
 
-> Note: the `@next` is temporary
+2. Navigate to the project directory.
 
-## Developing
+   ```
+   cd nodejs-sveltekit
+   ```
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+3. Install the necessary dependencies.
 
-```bash
-npm run dev
+   ```
+   npm i
+   ```
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+4. Rename the `.env.example` file to `.env` and update the values with your own OceanBase database credentials.
 
-## Building
-
-Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
-
-```bash
-npm run build
-```
-
-> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
+5. Start the development server.
+   ```
+   npm run dev
+   ```
+6. Open your browser and navigate to `http://localhost:3000` to view the app.
