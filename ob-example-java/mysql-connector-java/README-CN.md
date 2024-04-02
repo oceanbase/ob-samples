@@ -74,7 +74,7 @@ public class MySqlConnectorTest {
 }
 ```
 
-修改类属性中的连接信息，之后你就可以直接使用 run.sh 运行示例代码。
+修改代码中的连接信息，之后你就可以直接使用 run.sh 运行示例代码。
 
 ```bash
 sh run.sh

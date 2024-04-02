@@ -2,13 +2,9 @@ package main
 
 import (
 	"database/sql"
-	"encoding/json"
 	"fmt"
-	"log"
-	"os"
-	"path/filepath"
-
 	_ "github.com/go-sql-driver/mysql"
+	"log"
 )
 
 type Entity struct {
@@ -16,15 +12,8 @@ type Entity struct {
 	Name string `json:"name"`
 }
 
-var (
-	workspace = "/workspace/ob-example"
-	sqlFile   = "tests/sql/test.sql"
-	tableName = "t_test"
-)
-
 func main() {
-	// For details about 'dataSourceName', see
-	// https://github.com/go-sql-driver/mysql#dsn-data-source-name
+
 	var (
 		host     = "127.0.0.1"
 		port     = 2881
@@ -32,6 +21,9 @@ func main() {
 		username = "root@test"
 		password = ""
 	)
+
+	// For details about 'dataSourceName', see
+	// https://github.com/go-sql-driver/mysql#dsn-data-source-name
 	dataSourceName := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s", username, password, host, port, dbName)
 
 	db, err := sql.Open("mysql", dataSourceName)
@@ -40,38 +32,33 @@ func main() {
 	}
 	defer db.Close()
 
-	filePath := filepath.Join(workspace, sqlFile)
-	log.Println("Load sql file from: " + filePath)
+	if _, err = db.Exec("DROP TABLE IF EXISTS `t_test`"); err != nil {
+		log.Fatal(err)
+	}
+	if _, err = db.Exec("CREATE TABLE `t_test` (" +
+		"    `id`   int(10) NOT NULL AUTO_INCREMENT," +
+		"    `name` varchar(20) DEFAULT NULL," +
+		"    PRIMARY KEY (`id`)" +
+		") ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE = utf8_bin"); err != nil {
+		log.Fatal(err)
+	}
+	if _, err = db.Exec("INSERT INTO `t_test` VALUES (default, 'Hello OceanBase')"); err != nil {
+		log.Fatal(err)
+	}
 
-	bytes, err := os.ReadFile(filePath)
+	rows, err := db.Query("SELECT * FROM `t_test`")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	sqlFileContent := string(bytes)
-	log.Println("Exec sql:\n" + sqlFileContent)
-
-	if _, err = db.Exec(sqlFileContent); err != nil {
-		log.Fatal(err)
-	}
-
-	selectSql := "SELECT * FROM " + tableName
-	log.Println("Query sql: " + selectSql)
-
-	rows, err := db.Query(selectSql)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	log.Println("Get rows:")
-	count := 0
+	var result []Entity
 	for rows.Next() {
 		var entity Entity
 		if err = rows.Scan(&entity.ID, &entity.Name); err != nil {
 			log.Fatal(err)
 		}
-		b, _ := json.Marshal(entity)
-		log.Printf("## row %d: %s", count, string(b))
-		count++
+		result = append(result, entity)
 	}
+
+	log.Printf("Query got result: +%v", result)
 }

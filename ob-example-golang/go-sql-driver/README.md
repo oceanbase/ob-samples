@@ -29,7 +29,7 @@ if err != nil {
 defer db.Close()
 ```
 
-In the Gitpod environment, you can directly use `run.sh` to run the demo code.
+Modify the connection info in code, and use `run.sh` to run the example code.
 
 ```bash
 sh run.sh

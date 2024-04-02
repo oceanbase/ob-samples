@@ -74,7 +74,7 @@ public class MySqlConnectorTest {
 }
 ```
 
-Modify the class fields of connection info, and use `run.sh` to run the example code.
+Modify the connection info in code, and use `run.sh` to run the example code.
 
 ```bash
 sh run.sh
