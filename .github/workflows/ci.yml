@@ -22,7 +22,7 @@ jobs:
       - name: Start docker container
         timeout-minutes: 5
         run: |
-          docker run --name oceanbase-ce --network host -e MODE=slim -e FASTBOOT=true -d oceanbase-ce
+          docker run --name oceanbase-ce --network host -e MODE=slim -e FASTBOOT=true -d oceanbase/oceanbase-ce
           eval 'while ! docker logs oceanbase-ce | grep -q "boot success!"; do echo "booting..."; sleep 10; done'
           echo "boot success!"
       - name: Run example for ${{ matrix.module }}
