@@ -9,13 +9,14 @@ import java.sql.Statement;
 
 public class InsertAndSelectExample {
 
+    private static final String JDBC_URL = "jdbc:oceanbase://127.0.0.1:2881/test?characterEncoding=utf-8&useServerPrepStmts=true";
+    private static final String USERNAME = "root@test";
+    private static final String PASSWORD = "";
+
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         // connect to your database
-        String url = "jdbc:oceanbase://127.0.0.1:2881/test?characterEncoding=utf-8&useServerPrepStmts=true";
-        String user = "root@test";
-        String password = "";
         Class.forName("com.oceanbase.jdbc.Driver");
-        Connection conn = DriverManager.getConnection(url, user, password);
+        Connection conn = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
 
         // create a table
         Statement stmt = conn.createStatement();

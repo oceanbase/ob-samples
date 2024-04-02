@@ -21,62 +21,60 @@
 以 [MySqlConnectorTest.java](src/main/java/com/oceanbase/example/MySqlConnectorTest.java) 为例
 
 ```java
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 public class MySqlConnectorTest {
-    public static void main(String[] args) {
-        String workspace = "/workspace/ob-example";
-        String sqlFile = "tests/sql/test.sql";
-        String tableName = "t_test";
 
-        Properties properties = new Properties();
-        properties.put("user", "root@test");
-        properties.put("password", "");
-        String jdbcUrl = "jdbc:mysql://127.0.0.1:2881/test";
+  private static final String JDBC_URL = "jdbc:mysql://127.0.0.1:2881/test";
+  private static final String USERNAME = "root@test";
+  private static final String PASSWORD = "";
 
-        Connection connection;
-        Statement statement;
-        try {
-            connection = DriverManager.getConnection(jdbcUrl, properties);
-            statement = connection.createStatement();
-            System.out.println("Success to connect to OceanBase");
-        } catch (SQLException e) {
-            System.out.println("Failed to connect to OceanBase, exception: " + e.getMessage());
-            return;
+  public static void main(String[] args) {
+    try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+         Statement statement = connection.createStatement()) {
+      statement.execute("DROP TABLE IF EXISTS `t_test`");
+      statement.execute("CREATE TABLE `t_test` (" +
+        "    `id`   int(10) NOT NULL AUTO_INCREMENT," +
+        "    `name` varchar(20) DEFAULT NULL," +
+        "    PRIMARY KEY (`id`)" +
+        ") ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE = utf8_bin");
+      statement.execute("INSERT INTO `t_test` VALUES (default, 'Hello OceanBase')");
+
+      ResultSet rs = statement.executeQuery("SELECT * FROM `t_test`");
+      ResultSetMetaData metaData = rs.getMetaData();
+
+      List<String> result = new ArrayList<>();
+      while (rs.next()) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < metaData.getColumnCount(); i++) {
+          if (i != 0) {
+            sb.append(",");
+          }
+          Object value = rs.getObject(i + 1);
+          sb.append(value == null ? "null" : value.toString());
         }
+        result.add(sb.toString());
+      }
 
-        String selectSql = "SELECT * FROM " + tableName;
-        System.out.println("Query sql: " + selectSql);
-        try {
-            ResultSet rs = statement.executeQuery(selectSql);
-            ResultSetMetaData metaData = rs.getMetaData();
-            System.out.println("Get rows:");
-            int count = 0;
-            while (rs.next()) {
-                System.out.printf("## row %d: { ", count++);
-                for (int i = 0; i < metaData.getColumnCount(); i++) {
-                    System.out.print(metaData.getColumnName(i + 1) + ": " + rs.getObject(i + 1) + "; ");
-                }
-                System.out.println("}");
-            }
-        } catch (SQLException e) {
-            System.out.println("Failed to query table " + tableName + ", exception: " + e.getMessage());
-            return;
-        }
+      System.out.println(result);
 
-        try {
-            if (statement != null) {
-                statement.close();
-            }
-            if (connection != null) {
-                connection.close();
-            }
-        } catch (SQLException e) {
-            System.out.println("Failed to close statement and connection, exception: " + e.getMessage());
-        }
+      assert result.size() == 1;
+      assert result.get(0).equals("0,Hello OceanBase");
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
     }
+  }
 }
 ```
 
-在 Gitpod 环境中，可以直接使用 run.sh 运行示例代码。
+修改类属性中的连接信息，之后你就可以直接使用 run.sh 运行示例代码。
 
 ```bash
 sh run.sh

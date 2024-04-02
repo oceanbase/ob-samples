@@ -14,7 +14,7 @@ Add OceanBase JDBC driver to POM.
 <dependency>
   <groupId>com.oceanbase</groupId>
   <artifactId>oceanbase-client</artifactId>
-  <version>2.4.2</version>
+  <version>2.4.8</version>
 </dependency>
 ```
 
@@ -23,15 +23,23 @@ When using the OceanBase driver, you need to provide the JDBC Url. Please refer 
 Take [InsertAndSelectExample.java](src/main/java/com/oceanbase/example/InsertAndSelectExample.java) code as an example.
 
 ```java
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class InsertAndSelectExample {
+
+  private static final String JDBC_URL = "jdbc:oceanbase://127.0.0.1:2881/test?characterEncoding=utf-8&useServerPrepStmts=true";
+  private static final String USERNAME = "root@test";
+  private static final String PASSWORD = "";
 
   public static void main(String[] args) throws ClassNotFoundException, SQLException {
     // connect to your database
-    String url = "jdbc:oceanbase://127.0.0.1:2881/test?characterEncoding=utf-8&useServerPrepStmts=true";
-    String user = "root@test";
-    String password = "";
     Class.forName("com.oceanbase.jdbc.Driver");
-    Connection conn = DriverManager.getConnection(url, user, password);
+    Connection conn = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
 
     // create a table
     Statement stmt = conn.createStatement();
@@ -66,7 +74,7 @@ public class InsertAndSelectExample {
 }
 ```
 
-In the Gitpod environment, you can directly use `run.sh` to run the demo code.
+Modify the class fields of connection info, and use `run.sh` to run the example code.
 
 ```bash
 sh run.sh

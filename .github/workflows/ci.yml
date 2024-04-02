@@ -5,7 +5,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  run-examples-java:
+  java:
     runs-on: ubuntu-latest
     strategy:
       matrix:
