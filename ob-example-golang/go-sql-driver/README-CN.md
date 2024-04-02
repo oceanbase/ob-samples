@@ -10,7 +10,7 @@
 
 您需要使用 dataSourceName 来创建数据库连接，详细信息请参考 [go-sql-driver/mysql 文档](https://github.com/go-sql-driver/mysql#dsn-data-source-name)。
 
-以 [Test.go](Test.go) 代码为例
+以 [example.go](example.go) 代码为例
 
 ```go
 var (

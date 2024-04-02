@@ -10,7 +10,7 @@ For details about `go-sql-driver/mysql`, you can refer to [https://github.com/go
 
 You can use `dataSourceName` to create a database connection, please refer to [go-sql-driver/mysql documentation](https://github.com/go-sql-driver/mysql#dsn-data-source-name) for details.
 
-Take [Test.go](Test.go) code as an example.
+Take [example.go](example.go) code as an example.
 
 ```go
 var (
