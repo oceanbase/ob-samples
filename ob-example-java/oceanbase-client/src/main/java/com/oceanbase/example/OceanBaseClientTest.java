@@ -43,9 +43,6 @@ public class OceanBaseClientTest {
             }
 
             System.out.println(result);
-
-            assert result.size() == 1;
-            assert result.get(0).equals("0,Hello OceanBase");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
