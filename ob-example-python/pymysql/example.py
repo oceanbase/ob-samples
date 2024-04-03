@@ -1,37 +1,29 @@
 #!/usr/bin/python3
-import os
 
 import pymysql
-
-workspace = "/workspace/ob-example"
-sql_file = "tests/sql/test.sql"
-table_name = "t_test"
-
-
-def load_sql_from_script(filename):
-    fd = open(filename, 'r')
-    f = fd.read()
-    fd.close()
-    return f.split(';')
-
 
 if __name__ == "__main__":
     conn = pymysql.connect(host="127.0.0.1", port=2881,
                            user="root@test", passwd="", db="test")
     print("Success to connect to OceanBase with pymysql")
 
+    sqls = ['DROP TABLE IF EXISTS `t_test`',
+            'CREATE TABLE `t_test` ('
+            '  `id` int(10) NOT NULL AUTO_INCREMENT, '
+            '  `name` varchar(20) DEFAULT NULL, '
+            '  PRIMARY KEY (`id`)'
+            ') ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE = utf8_bin',
+            'INSERT INTO `t_test` VALUES (default, "Hello OceanBase")']
+
     # execute sql script
-    for sql in load_sql_from_script(os.path.join(workspace, sql_file)):
-        sql = sql.strip()
-        if sql == "":
-            continue
-        with conn.cursor() as cur:
+    with conn.cursor() as cur:
+        for sql in sqls:
             print("Exec sql: " + sql)
             cur.execute(sql)
 
     # query on test table
     with conn.cursor() as cur:
-        sql = 'SELECT * FROM ' + table_name
+        sql = 'SELECT * FROM `t_test`'
         print("Query sql: ", sql)
         cur.execute(sql)
         ans = cur.fetchall()

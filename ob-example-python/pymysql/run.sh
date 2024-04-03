@@ -1,2 +1,2 @@
 python3 -m pip install -r requirements.txt
-python3 Test.py
+python3 example.py

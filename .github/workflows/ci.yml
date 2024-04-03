@@ -52,3 +52,26 @@ jobs:
         run: |
           cd ob-example-java/${{ matrix.module }}
           sh run.sh
+
+  python:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        module: [ "pymysql" ]
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+      - name: Start docker container
+        timeout-minutes: 5
+        run: |
+          docker run --name oceanbase-ce --network host -e MODE=slim -e FASTBOOT=true -d oceanbase/oceanbase-ce
+          eval 'while ! docker logs oceanbase-ce | grep -q "boot success!"; do echo "booting..."; sleep 10; done'
+          echo "boot success!"
+      - name: Run example for ${{ matrix.module }}
+        run: |
+          cd ob-example-python/${{ matrix.module }}
+          sh run.sh
