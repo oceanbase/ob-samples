@@ -35,7 +35,7 @@ jobs:
           echo "boot success!"
       - name: Run example for ${{ matrix.module }}
         run: |
-          cd ob-example-golang/${{ matrix.module }}
+          cd golang/${{ matrix.module }}
           sh run.sh
 
   java:
@@ -60,7 +60,7 @@ jobs:
           echo "boot success!"
       - name: Run example for ${{ matrix.module }}
         run: |
-          cd ob-example-java/${{ matrix.module }}
+          cd java/${{ matrix.module }}
           sh run.sh
 
   python:
@@ -83,5 +83,5 @@ jobs:
           echo "boot success!"
       - name: Run example for ${{ matrix.module }}
         run: |
-          cd ob-example-python/${{ matrix.module }}
+          cd python/${{ matrix.module }}
           sh run.sh
