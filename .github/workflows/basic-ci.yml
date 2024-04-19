@@ -1,0 +1,55 @@
+name: Basic CI
+
+on:
+  workflow_call:
+    inputs:
+      module:
+        type: string
+        required: true
+        description: 'The name of sample project.'
+      language:
+        type: string
+        required: true
+        description: 'The programming language used by the sample project.'
+      with_oceanbase_container:
+        type: boolean
+        required: false
+        description: 'Whether to use a pre-deployed OceanBase container in CI workflow.'
+        default: true
+
+concurrency:
+  group: basic-ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Set Go env
+        if: ${{ inputs.language == 'golang' }}
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.20'
+      - name: Setup Java env
+        if: ${{ inputs.language == 'java' }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+          distribution: 'zulu'
+          cache: 'maven'
+      - name: Setup Python env
+        if: ${{ inputs.language == 'python' }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+      - name: Start OceanBase container
+        if: ${{ inputs.with_oceanbase_container }}
+        uses: oceanbase/setup-oceanbase-ce@v1.0
+        with:
+          network: 'host'
+      - name: Run sample for ${{ inputs.module }}
+        run: |
+          cd ${{ inputs.language }}/${{ inputs.module }}
+          sh run.sh

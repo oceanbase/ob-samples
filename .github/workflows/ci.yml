@@ -10,66 +10,26 @@ on:
       - 'docs/**'
       - '**.md'
       - '.*'
-concurrency:
-  group: ${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
 
 jobs:
-  golang:
-    runs-on: ubuntu-latest
+  basic-ci:
     strategy:
       matrix:
-        module: [ "go-sql-driver" ]
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - name: Set Go env
-        uses: actions/setup-go@v4
-        with:
-          go-version: '1.20'
-      - name: Start docker container
-        uses: oceanbase/setup-oceanbase-ce@v1.0
-      - name: Run example for ${{ matrix.module }}
-        run: |
-          cd golang/${{ matrix.module }}
-          sh run.sh
-
-  java:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        module: [ "mysql-connector-java", "oceanbase-client" ]
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - name: Set JDK
-        uses: actions/setup-java@v4
-        with:
-          java-version: '8'
-          distribution: 'zulu'
-          cache: 'maven'
-      - name: Start docker container
-        uses: oceanbase/setup-oceanbase-ce@v1.0
-      - name: Run example for ${{ matrix.module }}
-        run: |
-          cd java/${{ matrix.module }}
-          sh run.sh
-
-  python:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        module: [ "pymysql" ]
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.9"
-      - name: Start docker container
-        uses: oceanbase/setup-oceanbase-ce@v1.0
-      - name: Run example for ${{ matrix.module }}
-        run: |
-          cd python/${{ matrix.module }}
-          sh run.sh
+        module:
+          - name: 'go-sql-driver'
+            language: 'golang'
+            with_oceanbase_container: true
+          - name: 'mysql-connector-java'
+            language: 'java'
+            with_oceanbase_container: true
+          - name: 'oceanbase-client'
+            language: 'java'
+            with_oceanbase_container: true
+          - name: 'pymysql'
+            language: 'python'
+            with_oceanbase_container: true
+    uses: ./.github/workflows/basic-ci.yml
+    with:
+      module: ${{ matrix.module.name }}
+      language: ${{ matrix.module.language }}
+      with_oceanbase_container: ${{ matrix.module.with_oceanbase_container }}
