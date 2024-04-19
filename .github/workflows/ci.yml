@@ -12,7 +12,7 @@ on:
       - '.*'
 
 jobs:
-  basic-ci:
+  basic:
     strategy:
       matrix:
         module:
