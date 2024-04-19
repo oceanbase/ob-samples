@@ -18,7 +18,7 @@ on:
         default: true
 
 concurrency:
-  group: basic-ci-${{ github.event.pull_request.number || github.ref }}
+  group: basic-ci-${{ github.event.pull_request.number || github.ref }}-${{ inputs.module }}
   cancel-in-progress: true
 
 jobs:
