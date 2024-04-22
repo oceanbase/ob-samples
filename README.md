@@ -16,6 +16,8 @@ You can copy the sample code to local environment and use it directly after chan
 
 We welcome contributions from anyone, thanks to all [contributors](https://github.com/oceanbase/ob-samples/graphs/contributors)!
 
+We have created some issues on GitHub for some samples which are simple and good for first time contributors: https://github.com/oceanbase/ob-samples/issues/16.
+
 In the module, make sure to include the following files:
 
 - code files

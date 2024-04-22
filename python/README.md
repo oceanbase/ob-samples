@@ -1,3 +1,3 @@
 ## Introduction
 
-Please add Phython samples in this directory.
+Please add Python samples in this directory.

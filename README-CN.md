@@ -16,6 +16,8 @@
 
 我们欢迎任何人来贡献，感谢所有的[贡献者](https://github.com/oceanbase/ob-samples/graphs/contributors)！
 
+我们在 GitHub 上创建了一些任务，这些任务难度不高，对于首次贡献者来说比较友好，欢迎感兴趣的开发者认领：https://github.com/oceanbase/ob-samples/issues/16 。
+
 在一个示例中，请确保包含以下内容
 
 - 代码文件
