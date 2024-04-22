@@ -4,9 +4,9 @@ English | [简体中文](README-CN.md)
 
 ## Introduction
 
-This repository provides the example projects for OceanBase， which are grouped by programming language. The example directory is named after the component name.
+This repository provides the sample projects for OceanBase，which are grouped by programming language, and the sample directory is named after the component name.
 
-This repository uses the [oceanbase-ce](https://hub.docker.com/r/oceanbase/oceanbase-ce) image to start the OceanBase database instance in the GitHub workflow for continuous integration. Users can also copy the example code to local environment and use it after changing the connection info.
+You can copy the sample code to local environment and use it directly after changing the connection info, please see the README file in the sample directory for more details.
 
 ## Contribution
 
@@ -18,8 +18,11 @@ In the module, make sure to include the following files:
 
 - code files
 - `run.sh` script to run code
-- `README.md` documentation for component usage
-- Add your module's name to the github CI workflow ( please refer to https://github.com/oceanbase/ob-samples/.github/workflows/ci.yml )
+- `README.md` documentation for component usage.
+
+If it's hard to use English for you, you can use your native language in the documentation and we can improve it later.
+
+To ensure the sample works, please add your module to the GitHub CI workflow, see [ci.yml](./.github/workflows/ci.yml) for more details.
 
 ## References
 
