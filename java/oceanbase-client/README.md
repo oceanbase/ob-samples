@@ -20,7 +20,7 @@ Add OceanBase JDBC driver to POM.
 
 When using the OceanBase driver, you need to provide the JDBC Url. Please refer to [OceanBase Connector/J Documentation](https://www.oceanbase.com/docs/oceanbase-connector-j-cn) for details.
 
-Take [InsertAndSelectExample.java](src/main/java/com/oceanbase/example/InsertAndSelectExample.java) code as an example.
+Take [InsertAndSelectExample.java](src/main/java/com/oceanbase/samples/InsertAndSelectExample.java) code as an example.
 
 ```java
 import java.sql.Connection;

@@ -1,4 +1,4 @@
-module github.com/oceanbase/ob-example/golang-go-sql-driver
+module github.com/oceanbase/ob-samples/golang-go-sql-driver
 
 go 1.19
 

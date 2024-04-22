@@ -1,4 +1,4 @@
-package com.oceanbase.example;
+package com.oceanbase.samples;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

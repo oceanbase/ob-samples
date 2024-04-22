@@ -20,7 +20,7 @@
 
 使用 OceanBase 驱动时，需要提供相应的 JDBC Url，详细信息请参考 [OceanBase Connector/J 文档](https://www.oceanbase.com/docs/oceanbase-connector-j-cn)。
 
-以 [InsertAndSelectExample.java](src/main/java/com/oceanbase/example/InsertAndSelectExample.java) 为例
+以 [InsertAndSelectExample.java](src/main/java/com/oceanbase/samples/InsertAndSelectExample.java) 为例
 
 ```java
 import java.sql.Connection;
