@@ -18,7 +18,7 @@
 
 使用 MySQL 驱动时，需要提供相应的 JDBC Url，详细信息请参考 [MySQL文档](https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-jdbc-url-format.html)。
 
-以 [MySqlConnectorTest.java](src/main/java/com/oceanbase/example/MySqlConnectorTest.java) 为例
+以 [MySqlConnectorTest.java](src/main/java/com/oceanbase/samples/MySqlConnectorTest.java) 为例
 
 ```java
 import java.sql.Connection;

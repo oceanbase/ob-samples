@@ -14,7 +14,7 @@
 
 ## 贡献
 
-我们欢迎任何人来贡献，感谢所有的[贡献者](https://github.com/oceanbase/ob-example/graphs/contributors)！
+我们欢迎任何人来贡献，感谢所有的[贡献者](https://github.com/oceanbase/ob-samples/graphs/contributors)！
 
 在一个示例中，请确保包含以下内容
 

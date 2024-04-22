@@ -18,7 +18,7 @@ Add MySQL JDBC driver to POM.
 
 When using the MySQL driver, you need to provide the JDBC Url. Please refer to [MySQL Documentation](https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-jdbc-url-format.html) for details.
 
-Take [MySqlConnectorTest.java](src/main/java/com/oceanbase/example/MySqlConnectorTest.java) code as an example.
+Take [MySqlConnectorTest.java](src/main/java/com/oceanbase/samples/MySqlConnectorTest.java) code as an example.
 
 ```java
 import java.sql.Connection;
