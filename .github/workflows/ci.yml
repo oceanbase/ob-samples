@@ -18,18 +18,14 @@ jobs:
         module:
           - name: 'go-sql-driver'
             language: 'golang'
-            with_oceanbase_container: true
           - name: 'mysql-connector-java'
             language: 'java'
-            with_oceanbase_container: true
           - name: 'oceanbase-client'
             language: 'java'
-            with_oceanbase_container: true
           - name: 'pymysql'
             language: 'python'
-            with_oceanbase_container: true
     uses: ./.github/workflows/basic-ci.yml
     with:
       module: ${{ matrix.module.name }}
       language: ${{ matrix.module.language }}
-      with_oceanbase_container: ${{ matrix.module.with_oceanbase_container }}
+      with_oceanbase_container: ${{ matrix.module.with_oceanbase_container || true }}
