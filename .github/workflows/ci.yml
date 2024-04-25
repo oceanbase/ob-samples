@@ -27,6 +27,8 @@ jobs:
             with_oceanbase_container: false
           - name: 'pymysql'
             language: 'python'
+          - name: 'mysql-connector-python'
+            language: 'python'
     uses: ./.github/workflows/basic-ci.yml
     with:
       module: ${{ matrix.module.name }}
