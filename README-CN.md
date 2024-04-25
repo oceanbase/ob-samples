@@ -26,7 +26,13 @@
 
 如果您不能提供英文的文档，您可以在文档中使用您的母语，我们会在之后对其进行改进。
 
-为了确保示例正常工作，请将您的模块添加到 GitHub CI 工作流程中，有关更多详细信息，请参阅 [ci.yml](./.github/workflows/ci.yml)。
+为了确保示例正常工作，请将您的模块添加到 GitHub CI 工作流程。
+
+- `module.name`：新模块的名称，应与模块目录名称相同。
+- `module.language`：编程语言，应与项目根目录下的目录名称相同。
+- `module.with_oceanbase_container`：是否使用预先部署的 OceanBase 容器，可选，默认设置为 true。如果它是 true，您可以在 localhost 上使用用户名 `root@sys` 或 `root@test` 以及空密码连接到它。
+
+有关 CI 工作流程的更多详细信息，请参阅 [ci.yml](./.github/workflows/ci.yml)。
 
 ## 参考信息
 

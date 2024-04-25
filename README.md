@@ -26,7 +26,13 @@ In the module, make sure to include the following files:
 
 If it's hard to use English for you, you can use your native language in the documentation, and we can improve it later.
 
-To ensure the sample works, please add your module to the GitHub CI workflow, see [ci.yml](./.github/workflows/ci.yml) for more details.
+To ensure the sample works, please add your module to the GitHub CI workflow.
+
+- `module.name`: the name of new module, should be same with the module directory name.
+- `module.language`: the programming language, should be same with the directory name under project root.
+- `module.with_oceanbase_container`: whether to use a pre-deployed OceanBase container, optional, set 'true' by default. If it's 'true', you can connect to it using username 'root@sys' or 'root@test' with empty password at localhost.
+
+See [ci.yml](./.github/workflows/ci.yml) for more details about CI workflow.
 
 ## References
 
