@@ -3,11 +3,11 @@ import mysql.connector
 
 # 替换为你自己的 MySQL 服务器和数据库信息
 db_config = {
-    'user': 'your_username',
-    'password': 'your_password',
-    'host': 'localhost',
+    'user': 'root@test',
+    'password': '',
+    'host': '127.0.0.1',
     'port': '2881',   
-    'database': 'your_database_name',
+    'database': 'test',
 }
 
 # 替换为你的 JSON 文件路径
