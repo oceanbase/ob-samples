@@ -37,7 +37,6 @@ CREATE TABLE IF NOT EXISTS ProductFiles (
 );
 """
 # 执行创建表的 SQL 语句
-cursor.execute(create_products_table)
 cursor.execute(create_productfiles_table)
 
 # 读取 JSON 数据
