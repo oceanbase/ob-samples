@@ -1,7 +1,7 @@
 import json
 import mysql.connector
 
-# 替换为你自己的 MySQL 服务器和数据库信息
+# 替换为你自己的 OceanBase 服务器和数据库信息
 db_config = {
     'user': 'root@test',
     'password': '',
@@ -23,6 +23,37 @@ with open(json_file_path, 'r', encoding='utf-8') as file:
 # 连接数据库
 cnx = mysql.connector.connect(**db_config)
 cursor = cnx.cursor()
+
+# 创建 Products 表和 ProductFiles 表
+create_products_table = """
+CREATE TABLE IF NOT EXISTS Products (
+    ProductID INT AUTO_INCREMENT PRIMARY KEY,
+    ProductName VARCHAR(255) NOT NULL,
+    ProductVersion VARCHAR(50) NOT NULL,
+    UNIQUE (ProductName, ProductVersion)
+);
+"""
+create_productfiles_table = """
+CREATE TABLE IF NOT EXISTS ProductFiles (
+    FileID INT AUTO_INCREMENT PRIMARY KEY,
+    ProductID INT NOT NULL,
+    FileName VARCHAR(255) NOT NULL,
+    FileSummary TEXT,
+    FileKeywords TEXT,
+    FileContent MEDIUMTEXT,
+    FilePurpose VARCHAR(255),
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+      ON DELETE CASCADE ON UPDATE CASCADE
+);
+"""
+# 执行创建表的 SQL 语句
+cursor.execute(create_products_table)
+cursor.execute(create_productfiles_table)
+
+# 读取 JSON 数据
+with open(json_file_path, 'r', encoding='utf-8') as file:
+    data = json.load(file)
+
 
 # SQL 插入语句
 insert_stmt = (
