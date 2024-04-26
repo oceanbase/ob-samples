@@ -10,5 +10,7 @@ import java.util.List;
 public interface TestEntityRepository extends CrudRepository<TestEntity, Integer> {
     List<TestEntity> findByTestName(String lastName);
 
+    List<TestEntity> findByTestNameContaining(String testName);
+
     TestEntity findById(int id);
 }

@@ -2,13 +2,13 @@ server:
   port: 8081
 spring:
   jpa:
-    database: mysql
+    database: mysql # mysql, oracle
     show-sql: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://host:port/test?characterEncoding=UTF-8
-    username: *****
-    password: *****
+    url: jdbc:mysql://host:port/dbname?characterEncoding=UTF-8
+    username: ***** # your username
+    password: ***** # your password
 #spring.jpa.hibernate.ddl-auto=update
 jackson:
   serialization:
