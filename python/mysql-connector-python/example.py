@@ -24,15 +24,7 @@ with open(json_file_path, 'r', encoding='utf-8') as file:
 cnx = mysql.connector.connect(**db_config)
 cursor = cnx.cursor()
 
-# 创建 Products 表和 ProductFiles 表
-create_products_table = """
-CREATE TABLE IF NOT EXISTS Products (
-    ProductID INT AUTO_INCREMENT PRIMARY KEY,
-    ProductName VARCHAR(255) NOT NULL,
-    ProductVersion VARCHAR(50) NOT NULL,
-    UNIQUE (ProductName, ProductVersion)
-);
-"""
+# 创建 ProductFiles 表
 create_productfiles_table = """
 CREATE TABLE IF NOT EXISTS ProductFiles (
     FileID INT AUTO_INCREMENT PRIMARY KEY,
@@ -41,7 +33,7 @@ CREATE TABLE IF NOT EXISTS ProductFiles (
     FileSummary TEXT,
     FileKeywords TEXT,
     FileContent MEDIUMTEXT,
-    FilePurpose VARCHAR(255),
+    FilePurpose VARCHAR(255)
 );
 """
 # 执行创建表的 SQL 语句
