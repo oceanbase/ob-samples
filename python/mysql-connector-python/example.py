@@ -11,7 +11,7 @@ db_config = {
 }
 
 # 替换为你的 JSON 文件路径
-json_file_path = 'python/mysql-connector-python/example-data.json'
+json_file_path = 'example-data.json'
 
 # 要分配给每个记录的 ProductID
 product_id = 1
