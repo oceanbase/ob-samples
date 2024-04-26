@@ -42,8 +42,6 @@ CREATE TABLE IF NOT EXISTS ProductFiles (
     FileKeywords TEXT,
     FileContent MEDIUMTEXT,
     FilePurpose VARCHAR(255),
-    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
-      ON DELETE CASCADE ON UPDATE CASCADE
 );
 """
 # 执行创建表的 SQL 语句
