@@ -27,6 +27,12 @@ jobs:
             with_oceanbase_container: false
           - name: 'pymysql'
             language: 'python'
+          - name: 'oceanbase-spring-boot-mysql-jpa'
+            language: 'java'
+          - name: 'oceanbase-mybatis'
+            language: 'java'
+          - name: 'oceanbase-spring-jdbc'
+            language: 'java'
     uses: ./.github/workflows/basic-ci.yml
     with:
       module: ${{ matrix.module.name }}
