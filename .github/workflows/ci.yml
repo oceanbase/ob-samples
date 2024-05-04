@@ -29,6 +29,8 @@ jobs:
             language: 'python'
           - name: 'mysql-connector-python'
             language: 'python'
+          - name: 'mybatisplus-java'
+            language: 'java'
     uses: ./.github/workflows/basic-ci.yml
     with:
       module: ${{ matrix.module.name }}
