@@ -36,7 +36,7 @@ class MybatisPlusJavaApplicationTests {
         registry.add("spring.datasource.url", oceanBaseContainer::getJdbcUrl);
         registry.add("spring.datasource.username", oceanBaseContainer::getUsername);
         registry.add("spring.datasource.password", oceanBaseContainer::getPassword);
-        registry.add("spring.datasource.driver-class-name", oceanBaseContainer::getDriverClassName); // 这里假设这是正确的驱动类名
+        registry.add("spring.datasource.driver-class-name", oceanBaseContainer::getDriverClassName);
     }
 
     @BeforeAll
