@@ -6,9 +6,9 @@ spring:
     show-sql: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://host:port/dbname?characterEncoding=UTF-8
-    username: ***** # your username
-    password: ***** # your password
+    url: jdbc:mysql://localhost:2881/test?characterEncoding=UTF-8
+    username: root@test
+    password:
 #spring.jpa.hibernate.ddl-auto=update
 jackson:
   serialization:

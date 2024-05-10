@@ -38,10 +38,10 @@ public class OceanBaseSpringJdbcApplicationTest {
 
   static {
     Map<String, String> map = new HashMap<String, String>();
-    map.put("url", "jdbc:mysql://host:port/dbName");
+    map.put("url", "jdbc:mysql://localhost:2881/test");
     map.put("driverClassName", "com.mysql.cj.jdbc.Driver");
-    map.put("username", "*****");
-    map.put("password", "*****");
+    map.put("username", "root@test");
+    map.put("password", "");
     try {
       Class.forName(map.get("driverClassName"));
       jdbcTemplate = new JdbcTemplate(DruidDataSourceFactory.createDataSource(map));

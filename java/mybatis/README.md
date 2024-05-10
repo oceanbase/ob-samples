@@ -37,9 +37,9 @@ Since OceanBase supports MySQL mode and Oracle mode, the MySQL driver can be use
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">
         <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://host:port/dbName?useUnicode=true&amp;characterEncoding=utf-8&amp;useServerPrepStmts=false&amp;useCursorFetch=true"/>
-        <property name="username" value="*****"/>
-        <property name="password" value="*****"/>
+        <property name="url" value="jdbc:mysql://localhost:2881/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useServerPrepStmts=false&amp;useCursorFetch=true"/>
+        <property name="username" value="username=root@test"/>
+        <property name="password" value=""/>
       </dataSource>
     </environment>
   </environments>

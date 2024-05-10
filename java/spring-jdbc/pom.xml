@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.oceanbase.samples</groupId>
-  <artifactId>oceanbase-spring-jdbc</artifactId>
+  <artifactId>spring-jdbc</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <name>oceanbase-spring-jdbc</name>

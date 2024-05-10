@@ -1,13 +1,12 @@
-# Guide to Connecting Spring Boot to OceanBase (Using Spring Data JPA)
+# Spring Boot 连接 OceanBase 指南（使用 Spring Data JPA）
 
-English | [简体中文](README-CN.md)
+[English](README.md) | 简体中文
 
-This document introduces how to connect to the OceanBase database through Spring's official Spring Data JPA.
-Since OceanBase supports MySQL mode and Oracle mode, you can use the MySQL driver to connect to OceanBase.
+本文介绍如何通过 OceanBase 官方 SpringBoot 连接示例连接 OceanBase 数据库。
+由于 OceanBase 支持 MySQL 模式与 Oracle 模式，因此可以使用 MySQL 驱动连接 OceanBase。
+## 快速开始
 
-## Quick Start
-
-### First, add the Spring Boot, Spring Data JPA, and MySQL driver dependencies to the pom.xml file, referring to the [OceanBase SpringBoot connection example](https://www.oceanbase.com/docs/community-observer-cn-10000000000900914).
+### 在 pom.xml 中首先加入 Spring Boot 与 Spring Data JPA 相关的驱动, 以及 MySQL 驱动，pom.xml 参考[OceanBase SpringBoot 连接示例](https://www.oceanbase.com/docs/community-observer-cn-10000000000900914) 示例。
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -15,7 +14,7 @@ Since OceanBase supports MySQL mode and Oracle mode, you can use the MySQL drive
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.oceanbase.samples</groupId>
-  <artifactId>oceanbase-spring-boot-mysql-jpa</artifactId>
+  <artifactId>spring-boot-mysql-jpa</artifactId>
   <version>1.0-SNAPSHOT</version>
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -65,7 +64,7 @@ Since OceanBase supports MySQL mode and Oracle mode, you can use the MySQL drive
 </project>
 ```
 
-### Add the database connection information and other configurations in the application.yml file.
+### 在 application.yml 文件加入数据库连接信息等。
 
 ```yaml
 server:
@@ -76,18 +75,17 @@ spring:
     show-sql: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://host:port/test?characterEncoding=UTF-8
-    username: *****
-    password: *****
+    url: jdbc:mysql://localhost:2881/test?characterEncoding=UTF-8
+    username: root@test
+    password:
 #spring.jpa.hibernate.ddl-auto=update
 jackson:
   serialization:
     indent_output: true
 ```
+### 测试用例：
 
-### Test Cases:
-
-#### 1.Define a simple entity:
+#### 1.定义简单实体：
 ```java
 package com.oceanbase.samples.entity;
 
@@ -106,7 +104,7 @@ public class TestEntity implements Serializable {
   private static final long serialVersionUID = -6578740021873269176L;
 
   @Id
-  // @GeneratedValue(strategy=GenerationType.AUTO) //Oracle does not have an auto-increment strategy. Adding this annotation can automatically generate a sequence to provide an auto-increment primary key. If the database already has a relevant sequence, you can omit this annotation.
+  // @GeneratedValue(strategy=GenerationType.AUTO) //oracle 没有自增策略，添加该注解可以自动生成一个序列，提供自增主键，若数据库已有相关序列，可以忽 //略该注解。
   @Column(name = "id")
   private Integer testId;
 
@@ -162,7 +160,7 @@ public class TestEntity implements Serializable {
   }
 }
 ```
-#### 2.Create a simple query:
+#### 2.创建简单查询：
 ```java
 package com.oceanbase.samples.repository;
 
@@ -182,7 +180,7 @@ public interface TestEntityRepository extends CrudRepository<TestEntity, Integer
 }
 ```
 
-#### 3.Create test cases in the controller for CRUD operations:
+#### 3.在 controller 创建测试用例，测试增删改查：
 ```java
 package com.oceanbase.samples.controller;
 
@@ -251,7 +249,7 @@ public class TestController {
 }
 ```
 
-#### 4.Create the application class and run it:
+#### 4.创建应用程序类，并运行：
 ```java
 package com.oceanbase.samples;
 
@@ -267,14 +265,14 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class HelloOceanBaseBootApplication {
 
-  public static void main( String[] args ) {
-    SpringApplication.run(HelloOceanBaseBootApplication.class, args);
-  }
+    public static void main( String[] args ) {
+        SpringApplication.run(HelloOceanBaseBootApplication.class, args);
+    }
 
 }
 ```
 
-Modify the connection info in code, and use `run.sh` to run the example code.
+修改代码中的连接信息，之后你就可以直接使用 run.sh 运行示例代码。
 
 ```bash
 sh run.sh
