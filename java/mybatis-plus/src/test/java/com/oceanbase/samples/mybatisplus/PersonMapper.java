@@ -1,4 +1,4 @@
-package com.oceanbase.samples.mybatisplusjava;
+package com.oceanbase.samples.mybatisplus;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;

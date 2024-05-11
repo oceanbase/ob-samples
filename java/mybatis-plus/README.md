@@ -61,7 +61,7 @@ Add the OceanBase driver, TestContainers OceanBase, MybatisPlusStarter, and Spri
 ```
 
 Take the code
-in [MybatisPlusJavaApplicationTests.java](src/test/java/com/oceanbase/samples/mybatisplusjava/MybatisPlusJavaApplicationTests.java)
+in [MybatisPlusJavaApplicationTests.java](src/test/java/com/oceanbase/samples/mybatisplus/MybatisPlusJavaApplicationTests.java)
 as an example.
 
 The following code not only implements lifecycle management for the `OceanBaseCEContainer`. It will start the container

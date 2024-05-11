@@ -18,7 +18,15 @@ We welcome contributions from anyone, thanks to all [contributors](https://githu
 
 We have created some issues on GitHub for some samples which are simple and good for first time contributors: https://github.com/oceanbase/ob-samples/issues/16.
 
-In the module, make sure to include the following files:
+### Add a sample
+
+In this repository, every sample project will be as an independent module. The directory name of the module should be same with the tool used in the sample. For example, the sample of `mysql-connector-java` is named `mysql-connector-java`.
+
+There are many category directories in the root directory of this repository. For samples that can be run directly through simple commands, we recommend add them to the directory which corresponding to the programming language environment required by the sample. For example, `mysql-connector-java` needs to be added to the `java` directory. For samples that require more complex configuration to run, we recommend placing the sample project in the `applications` directory.
+
+#### Simple samples
+
+For a simple sample under the programming language category, the directory should contain the following content
 
 - code files
 - `run.sh` script to run code
@@ -26,13 +34,15 @@ In the module, make sure to include the following files:
 
 If it's hard to use English for you, you can use your native language in the documentation, and we can improve it later.
 
-To ensure the sample works, please add your module to the GitHub CI workflow.
+To ensure that the sample works, please add your module to the GitHub CI workflow. This project provides a standardized workflow for simple samples. For details, please refer to [basic-ci.yml](./.github/workflows/basic-ci.yml). You only need to add the following options to add your module to the `basic` job in [ci.yml](./.github/workflows/ci.yml):
 
 - `module.name`: the name of new module, should be same with the module directory name.
 - `module.language`: the programming language, should be same with the directory name under project root.
 - `module.with_oceanbase_container`: whether to use a pre-deployed OceanBase container, optional, set 'true' by default. If it's 'true', you can connect to it using username 'root@sys' or 'root@test' with empty password at localhost.
 
-See [ci.yml](./.github/workflows/ci.yml) for more details about CI workflow.
+#### Complex samples
+
+For complex samples that need to be placed in the applications directory, the directory also needs to contain the `README.md` document. In addition, its project files, ci workflow, etc. will be added by yourself.
 
 ## References
 

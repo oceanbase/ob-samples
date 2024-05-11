@@ -60,7 +60,7 @@
 </dependencies>
 ```
 
-以 [MybatisPlusJavaApplicationTests.java](src/test/java/com/oceanbase/samples/mybatisplusjava/MybatisPlusJavaApplicationTests.java)
+以 [MybatisPlusJavaApplicationTests.java](src/test/java/com/oceanbase/samples/mybatisplus/MybatisPlusJavaApplicationTests.java)
 代码为例。
 
 以下代码不仅实现了`OceanBaseCEContainer`的生命周期管理。 它将在执行任何测试用例之前启动容器实例，并在执行所有测试用例后停止容器，而且还在期间使用

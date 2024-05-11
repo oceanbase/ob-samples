@@ -34,7 +34,7 @@ jobs:
           - name: 'mysql-connector-python'
             language: 'python'
             with_oceanbase_container: true
-          - name: 'mybatisplus-java'
+          - name: 'mybatis-plus'
             language: 'java'
             with_oceanbase_container: false
     uses: ./.github/workflows/basic-ci.yml

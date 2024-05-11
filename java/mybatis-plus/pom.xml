@@ -9,10 +9,10 @@
     <relativePath/>
   </parent>
   <groupId>com.oceanbase.samples</groupId>
-  <artifactId>mybatisplus-java</artifactId>
+  <artifactId>mybatis-plus</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>mybatisplus-java</name>
-  <description>mybatisplus-java</description>
+  <name>mybatis-plus</name>
+  <description>mybatis-plus</description>
   <dependencies>
     <dependency>
       <groupId>com.oceanbase</groupId>
