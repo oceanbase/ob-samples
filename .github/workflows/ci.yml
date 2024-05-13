@@ -18,10 +18,13 @@ jobs:
         module:
           - name: 'go-sql-driver'
             language: 'golang'
+            with_oceanbase_container: true
           - name: 'mysql-connector-java'
             language: 'java'
+            with_oceanbase_container: true
           - name: 'oceanbase-client'
             language: 'java'
+            with_oceanbase_container: true
           - name: 'testcontainers-java'
             language: 'java'
             with_oceanbase_container: false
@@ -29,12 +32,21 @@ jobs:
             language: 'python'
           - name: 'spring-boot-mysql-jpa'
             language: 'java'
+            with_oceanbase_container: false            
           - name: 'mybatis'
             language: 'java'
+            with_oceanbase_container: false
           - name: 'spring-jdbc'
             language: 'java'
+            with_oceanbase_container: false
+          - name: 'mysql-connector-python'
+            language: 'python'
+            with_oceanbase_container: true
+          - name: 'mybatis-plus'
+            language: 'java'
+            with_oceanbase_container: false
     uses: ./.github/workflows/basic-ci.yml
     with:
       module: ${{ matrix.module.name }}
       language: ${{ matrix.module.language }}
-      with_oceanbase_container: ${{ matrix.module.with_oceanbase_container || true }}
+      with_oceanbase_container: ${{ matrix.module.with_oceanbase_container }}
