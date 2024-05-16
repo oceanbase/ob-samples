@@ -1,0 +1,33 @@
+nz-sider {
+  height: 100%;
+  margin-right: 15px;
+  line-height: 120px;
+}
+
+nz-content {
+  min-height: 100%;
+  line-height: 120px;
+}
+
+nz-layout {
+  height: 100%;
+  margin-bottom: 10px;
+}
+
+nz-layout:last-child {
+  margin: 0;
+}
+
+p {
+  font-size: xx-small;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+[data-theme='dark'] {
+  :host ::ng-deep {
+    .ant-layout-sider-light {
+      background: #141414;
+    }
+  }
+}
