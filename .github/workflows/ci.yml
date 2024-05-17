@@ -37,6 +37,9 @@ jobs:
           - name: 'mybatis-plus'
             language: 'java'
             with_oceanbase_container: false
+          - name: 'mybatis'
+            language: 'java'
+            with_oceanbase_container: false
     uses: ./.github/workflows/basic-ci.yml
     with:
       module: ${{ matrix.module.name }}
