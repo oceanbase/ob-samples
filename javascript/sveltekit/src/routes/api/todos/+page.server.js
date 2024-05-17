@@ -1,6 +1,6 @@
 import { createOceanbaseConnection } from '../../../lib/db';
 
-export async function get() {
+export async function post() {
   let results = await createOceanbaseConnection()
     .query('SELECT * FROM tasks')
     .then(function ([rows, fields]) {
