@@ -1,4 +1,4 @@
-import { createOceanbaseConnection } from '../../../lib/db';
+import { createOceanbaseConnection } from '../../../vendor/db';
 
 export async function del(req) {
   const { id } = req.params;

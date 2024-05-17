@@ -1,4 +1,4 @@
-import { createOceanbaseConnection } from '../../../lib/db';
+import { createOceanbaseConnection } from '../../../vendor/db';
 
 export async function post() {
   let results = await createOceanbaseConnection()
