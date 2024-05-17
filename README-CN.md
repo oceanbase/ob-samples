@@ -18,6 +18,32 @@
 
 我们在 GitHub 上创建了一些任务，这些任务难度不高，对于首次贡献者来说比较友好，欢迎感兴趣的开发者认领：https://github.com/oceanbase/ob-samples/issues/16 。
 
+如下是本仓库已经添加或计划在近期添加的示例:
+
+- application
+  - TODO: `hertzbeat` `seatunnel`
+- c
+  - TODO: `obconnector-c`
+- c_plusplus
+  - TODO: `mysql-connector-cpp`
+- c_sharp
+  - TODO: `mysql-connector-net` `MySqlConnector`
+- golang
+  - `go-sql-driver`
+  - TODO: `gorm` `xorm` `obkv-table-client-go`
+- java
+  - `mybatis-plus` `mysql-connector-java` `oceanbase-client` `testcontainers-java`
+  - TODO: `mybatis` `hibernate` `spring-jdbc` `spring-data-jpa` `hikaricp` `flink-cdc` `oblogclient` `obkv-table-client-java`
+- javascript
+  - `sveltekit`
+- php
+  - TODO: `mysqli` `pdo`
+- python
+  - `mysql-connector-python` `pymysql`
+  - TODO: `mysqlclient` `sqlalchemy`
+- rust
+  - TODO: `sqlx` `rust-mysql-simple` `obkv-table-client-rust`
+
 ### 增加一个示例
 
 在本仓库中，一个示例将作为一个独立的模块存在，模块的目录名称应当与示例所用的工具保持一致，如 `mysql-connector-java` 的示例目录就命名为 `mysql-connector-java`。

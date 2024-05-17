@@ -18,6 +18,32 @@ We welcome contributions from anyone, thanks to all [contributors](https://githu
 
 We have created some issues on GitHub for some samples which are simple and good for first time contributors: https://github.com/oceanbase/ob-samples/issues/16.
 
+The following are samples that have been added or planned to be added in the near future:
+
+- application
+  - TODO: `hertzbeat` `seatunnel`
+- c
+  - TODO: `obconnector-c`
+- c_plusplus
+  - TODO: `mysql-connector-cpp`
+- c_sharp
+  - TODO: `mysql-connector-net` `MySqlConnector`
+- golang
+  - `go-sql-driver`
+  - TODO: `gorm` `xorm` `obkv-table-client-go`
+- java
+  - `mybatis-plus` `mysql-connector-java` `oceanbase-client` `testcontainers-java`
+  - TODO: `mybatis` `hibernate` `spring-jdbc` `spring-data-jpa` `hikaricp` `flink-cdc` `oblogclient` `obkv-table-client-java`
+- javascript
+  - `sveltekit`
+- php
+  - TODO: `mysqli` `pdo`
+- python
+  - `mysql-connector-python` `pymysql`
+  - TODO: `mysqlclient` `sqlalchemy`
+- rust
+  - TODO: `sqlx` `rust-mysql-simple` `obkv-table-client-rust`
+
 ### Add a sample
 
 In this repository, every sample project will be as an independent module. The directory name of the module should be same with the tool used in the sample. For example, the sample of `mysql-connector-java` is named `mysql-connector-java`.
