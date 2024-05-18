@@ -16,16 +16,16 @@ server:
   port: ${random.int[10000,19999]}
 spring:
   datasource:
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: 123456
-    url: jdbc:h2:./data/test;MODE=MYSQL
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password:
+    url: jdbc:mysql://localhost:2881/test?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&useSSL=false
     hikari:
       max-lifetime: 120000
   jpa:
     show-sql: false
     database-platform: org.eclipse.persistence.platform.database.MySQLPlatform
-    database: h2
+    database: mysql
     properties:
       eclipselink:
         logging:
