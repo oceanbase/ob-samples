@@ -17,7 +17,7 @@ public class OceanBaseSpringJdbcApplicationTest
     private String sql;
     static {
         Map<String, String> map = new HashMap<String, String>();
-        map.put("url", "jdbc:mysql://localhost:2881/test");
+        map.put("url", "jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC");
         map.put("driverClassName", "com.mysql.cj.jdbc.Driver");
         map.put("username", "root@test");
         map.put("password", "");
@@ -47,20 +47,6 @@ public class OceanBaseSpringJdbcApplicationTest
         jdbcTemplate.execute(sql);
     }
 
-    // Oracle Type Create
-    @Test
-    public void createByOrcTypeDate(){
-        // Oracle Create Table
-        sql ="CREATE TABLE D_DPRECORD(DEV_ID VARCHAR2(50),"+
-            "CAR_SPEED NUMBER(3),"+
-            "CAP_DATE TIMESTAMP WITH LOCAL TIME ZONE," +
-            "DEV_CHNID VARCHAR2(50) NOT NULL," +
-            "TRSFMARK NUMBER(1) DEFAULT 0," +
-            "CREATE_TIME DATE DEFAULT sysdate" +
-            ");";
-
-        jdbcTemplate.execute(sql);
-    }
 
     // MySQL/Oracle Type Add Test Data
     @Test
