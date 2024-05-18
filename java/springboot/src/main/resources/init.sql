@@ -5,3 +5,7 @@ CREATE TABLE IF NOT EXISTS staff
   id   INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255) NULL
 );
+
+INSERT INTO staff (name) VALUES ('Alice');
+INSERT INTO staff (name) VALUES ('Bob');
+INSERT INTO staff (name) VALUES ('test');
