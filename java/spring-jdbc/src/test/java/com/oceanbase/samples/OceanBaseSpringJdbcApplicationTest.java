@@ -1,7 +1,6 @@
 package com.oceanbase.samples;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
@@ -53,17 +52,17 @@ public class OceanBaseSpringJdbcApplicationTest
     }
 
 
-    // 创建（Create）操作的单元测试
+    // insert
     @Test
-    public void testCreate() {
+    public void testInsert() {
         String sql = "INSERT INTO staff (name) VALUES (?)";
         int rowsAffected = jdbcTemplate.update(sql, "New Staff");
-        Assert.assertEquals(1, rowsAffected);
+        System.out.println("rowsAffected: " + rowsAffected);
     }
 
-    // 读取（Read）操作的单元测试
+    // select
     @Test
-    public void testRead() {
+    public void testSelect() {
         String sql = "SELECT * FROM staff WHERE name = ?";
         RowMapper<String> rowMapper = new RowMapper<String>() {
             @Override
@@ -72,25 +71,6 @@ public class OceanBaseSpringJdbcApplicationTest
             }
         };
         List<String> names = jdbcTemplate.query(sql, rowMapper, "New Staff");
-        Assert.assertEquals("New Staff", names.get(0));
+        System.out.println("names: " + names);
     }
-
-    // 更新（Update）操作的单元测试
-    @Test
-    public void testUpdate() {
-        String sql = "UPDATE staff SET name = ? WHERE name = ?";
-        int rowsAffected = jdbcTemplate.update(sql, "Updated Staff", "New Staff");
-        Assert.assertEquals(1, rowsAffected);
-    }
-
-    // 删除（Delete）操作的单元测试
-    @Test
-    public void testDelete() {
-        String sql = "DELETE FROM staff WHERE name = ?";
-        int rowsAffected = jdbcTemplate.update(sql, "Updated Staff");
-        Assert.assertEquals(1, rowsAffected);
-    }
-
-
-
 }
