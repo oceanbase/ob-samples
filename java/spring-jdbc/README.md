@@ -41,7 +41,7 @@ public class OceanBaseSpringJdbcApplicationTest {
 
   static {
     Map<String, String> map = new HashMap<String, String>();
-    map.put("url", "jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC");
+    map.put("url", "jdbc:mysql://localhost:2881/test?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC");
     map.put("driverClassName", "com.mysql.cj.jdbc.Driver");
     map.put("username", "root@test");
     map.put("password", "");

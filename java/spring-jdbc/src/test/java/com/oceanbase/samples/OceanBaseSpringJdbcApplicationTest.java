@@ -17,7 +17,7 @@ public class OceanBaseSpringJdbcApplicationTest
     private String sql;
     static {
         Map<String, String> map = new HashMap<String, String>();
-        map.put("url", "jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC");
+        map.put("url", "jdbc:mysql://localhost:2881/test?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC");
         map.put("driverClassName", "com.mysql.cj.jdbc.Driver");
         map.put("username", "root@test");
         map.put("password", "");
@@ -37,7 +37,8 @@ public class OceanBaseSpringJdbcApplicationTest
     @Test
     public void createByMySQLTypeDate(){
         // MySQL Create Table
-        sql ="CREATE TABLE D_DPRECORD(DEV_ID VARCHAR(50),"+
+        sql ="CREATE TABLE IF NOT EXISTS D_DPRECORD" +
+            "(DEV_ID VARCHAR(50),"+
             "CAR_SPEED INT(3),"+
             "CAP_DATE TIMESTAMP," +
             "DEV_CHNID VARCHAR(50) not null," +
