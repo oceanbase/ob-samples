@@ -25,6 +25,12 @@
       <artifactId>mybatis</artifactId>
       <version>3.5.4</version>
     </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   <build>
     <resources>
@@ -32,6 +38,7 @@
         <directory>src/main/resources</directory>
         <includes>
           <include>**/**.xml</include>
+          <include>**/**.sql</include>
         </includes>
       </resource>
     </resources>

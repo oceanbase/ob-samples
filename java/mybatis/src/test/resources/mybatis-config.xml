@@ -9,7 +9,7 @@
       <dataSource type="POOLED">
         <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:2881/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useServerPrepStmts=false&amp;useCursorFetch=true"/>
-        <property name="username" value="username=root@test"/>
+        <property name="username" value="root@test"/>
         <property name="password" value=""/>
       </dataSource>
     </environment>

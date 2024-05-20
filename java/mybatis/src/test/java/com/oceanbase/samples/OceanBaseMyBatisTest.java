@@ -2,13 +2,16 @@ package com.oceanbase.samples;
 
 
 import com.oceanbase.samples.entity.User;
+import com.oceanbase.samples.util.SqlSessionUtil;
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.jdbc.ScriptRunner;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.sql.Connection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,39 +21,30 @@ import java.util.Objects;
 public class OceanBaseMyBatisTest
 {
 
-    public static void main( String[] args )
-    {
-        SqlSession sqlSession = null;
-        try {
-            // Get SqlSessionFactoryBuilder
-            SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
-            // Load mybatis-config.xml as InputStream
-            InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
-            // Get SqlSessionFactory
-            SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(inputStream);
-            // Get SqlSession
-            sqlSession = sqlSessionFactory.openSession();
-            // Execute SQL
-            // insertTest(sqlSession);
-            // updateTest(sqlSession);
-            // selectTest(sqlSession);
-            // selectWithPagination(sqlSession, 0, 10);
-            deleteTest(sqlSession);
-            // Commit Transaction
-            sqlSession.commit();
-        } catch (IOException e) {
-            // Rollback Transaction
-            if (sqlSession != null) {
-                sqlSession.rollback();
+
+    @Before
+    public void setUp() throws Exception {
+        // 执行SQL脚本
+            try  {
+                Connection connection = SqlSessionUtil.openSession().getConnection();
+                ScriptRunner runner = new ScriptRunner(connection);
+                runner.runScript(new InputStreamReader(Resources.getResourceAsStream("init.sql")));
+                SqlSessionUtil.openSession().commit();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            e.printStackTrace();
-        } finally {
-            // Close SqlSession
-            if (sqlSession != null) {
-                sqlSession.close();
-            }
-        }
     }
+
+    @Test
+    public void test() {
+        insertTest(SqlSessionUtil.openSession());
+        updateTest(SqlSessionUtil.openSession());
+        selectTest(SqlSessionUtil.openSession());
+        selectWithPagination(SqlSessionUtil.openSession(), 0, 2);
+        deleteTest(SqlSessionUtil.openSession());
+    }
+
+
 
     public static void insertTest(SqlSession sqlSession) {
         // Insert data
@@ -89,5 +83,10 @@ public class OceanBaseMyBatisTest
         // Delete data
         int count = sqlSession.delete("com.oceanbase.samples.mapper.UserMapper.delete", 3);
         System.out.println("Delete count: " + count);
+    }
+
+    @After
+    public void closeSession() {
+        SqlSessionUtil.openSession().close();
     }
 }
