@@ -48,3 +48,41 @@ yarn start
 ```
 
 6. Access `http://localhost:4200` to start, account `admin/hertzbeat`
+
+## Custom Database Configuration
+
+### Custom Local or Prod Env Configuration
+
+Modify the `application.yml` file in the `manager` module `manager/src/main/resources`
+
+```yaml
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password:
+    url: jdbc:mysql://localhost:2881/hertzbeat?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    hikari:
+      max-lifetime: 120000
+```
+
+### Custom Test Env Configuration
+
+This if for the test environment, `mvn clean test`
+
+Modify the `application-test.yml` file in the `manager` module `manager/src/main/resources`
+
+```yaml
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password:
+    url: jdbc:mysql://localhost:2881/test?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    hikari:
+      max-lifetime: 120000
+```
