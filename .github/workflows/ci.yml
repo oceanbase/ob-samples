@@ -43,6 +43,9 @@ jobs:
           - name: 'spring-jdbc'
             language: 'java'
             with_oceanbase_container: true
+          - name: 'springboot'
+            language: 'java'
+            with_oceanbase_container: true
     uses: ./.github/workflows/basic-ci.yml
     with:
       module: ${{ matrix.module.name }}
