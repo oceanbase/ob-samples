@@ -7,6 +7,6 @@ CREATE TABLE staff
   name VARCHAR(255) NULL
 );
 
-INSERT INTO staff (name) VALUES (1,'Alice');
+INSERT INTO staff (name) VALUES ('Alice');
 INSERT INTO staff (name) VALUES ('Bob');
 INSERT INTO staff (name) VALUES ('test');
