@@ -40,6 +40,9 @@ jobs:
           - name: 'mybatis'
             language: 'java'
             with_oceanbase_container: true
+          - name: 'spring-jdbc'
+            language: 'java'
+            with_oceanbase_container: true
           - name: 'springboot'
             language: 'java'
             with_oceanbase_container: true
