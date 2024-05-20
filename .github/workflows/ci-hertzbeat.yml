@@ -1,0 +1,25 @@
+name: HertzBeat CI
+on:
+  pull_request:
+    paths:
+      - 'applications/hertzbeat/**'
+
+jobs:
+  application-hertzbeat:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Java Env
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+          cache: 'maven'
+      - name: Start OceanBase container
+        uses: oceanbase/setup-oceanbase-ce@v1.0
+        with:
+          network: 'host'
+      - name: Build and Test
+        run: |
+          cd applications/hertzbeat
+          mvn clean test
