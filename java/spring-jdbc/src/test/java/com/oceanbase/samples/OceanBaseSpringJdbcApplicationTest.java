@@ -1,10 +1,19 @@
 package com.oceanbase.samples;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.datasource.init.ScriptUtils;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,60 +41,56 @@ public class OceanBaseSpringJdbcApplicationTest
         }
     }
 
-
-    // MySQL Type Create Table
-    @Test
-    public void createByMySQLTypeDate(){
-        // MySQL Create Table
-        sql ="CREATE TABLE IF NOT EXISTS D_DPRECORD" +
-            "(DEV_ID VARCHAR(50),"+
-            "CAR_SPEED INT(3),"+
-            "CAP_DATE TIMESTAMP," +
-            "DEV_CHNID VARCHAR(50) not null," +
-            "TRSFMARK INT(1) DEFAULT 0," +
-            "CREATE_TIME TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
-            ");";
-        jdbcTemplate.execute(sql);
-    }
-
-
-    // MySQL/Oracle Type Add Test Data
-    @Test
-    public void addTest(){
-        int i = 1;
-        for (;i<=100;i++){
-            sql = "INSERT INTO D_DPRECORD VALUES " +
-                "('DEV_ID"+i+"',"+i+",'2021-01-01 00:00:00','DEV_CHNID"+i+"',"+i+",'2021-01-01 00:00:00');";
-            jdbcTemplate.execute(sql);
+    @Before
+    public void initializeDatabase() {
+        Resource initSchema = new ClassPathResource("init.sql");
+        try {
+            // Execute init.sql script to create and populate the database
+            ScriptUtils.executeSqlScript(jdbcTemplate.getDataSource().getConnection(), initSchema);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to execute init.sql script", e);
         }
     }
 
-    // MySQL/Oracle Type Query Test Data
+
+    // 创建（Create）操作的单元测试
     @Test
-    public void queryTest(){
-        sql = "SELECT * FROM D_DPRECORD;";
-        jdbcTemplate.queryForList(sql).forEach(System.out::println);
+    public void testCreate() {
+        String sql = "INSERT INTO staff (name) VALUES (?)";
+        int rowsAffected = jdbcTemplate.update(sql, "New Staff");
+        Assert.assertEquals(1, rowsAffected);
     }
 
-    // MySQL/Oracle Type Update Test Data
+    // 读取（Read）操作的单元测试
     @Test
-    public void updateTest(){
-        sql = "UPDATE D_DPRECORD SET CAR_SPEED = 100 WHERE DEV_ID = 'DEV_ID1';";
-        jdbcTemplate.execute(sql);
+    public void testRead() {
+        String sql = "SELECT * FROM staff WHERE name = ?";
+        RowMapper<String> rowMapper = new RowMapper<String>() {
+            @Override
+            public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return rs.getString("name");
+            }
+        };
+        List<String> names = jdbcTemplate.query(sql, rowMapper, "New Staff");
+        Assert.assertEquals("New Staff", names.get(0));
     }
 
-    // MySQL/Oracle Type Delete Test Data
+    // 更新（Update）操作的单元测试
     @Test
-    public void deleteTest(){
-        sql = "DELETE FROM D_DPRECORD WHERE DEV_ID = 'DEV_ID1';";
-        jdbcTemplate.execute(sql);
+    public void testUpdate() {
+        String sql = "UPDATE staff SET name = ? WHERE name = ?";
+        int rowsAffected = jdbcTemplate.update(sql, "Updated Staff", "New Staff");
+        Assert.assertEquals(1, rowsAffected);
     }
 
-    // MySQL/Oracle Type Drop Table
+    // 删除（Delete）操作的单元测试
     @Test
-    public void dropTable(){
-        sql = "DROP TABLE D_DPRECORD;";
-        jdbcTemplate.execute(sql);
+    public void testDelete() {
+        String sql = "DELETE FROM staff WHERE name = ?";
+        int rowsAffected = jdbcTemplate.update(sql, "Updated Staff");
+        Assert.assertEquals(1, rowsAffected);
     }
+
+
 
 }
