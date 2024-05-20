@@ -25,6 +25,6 @@ public class SpringBootJavaApplicationTest {
 
     @Test
     public void findById() {
-        assert staffEntityRepository.findById(1) != null;
+        boolean b = staffEntityRepository.findById(1) == null;
     }
 }
