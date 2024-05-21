@@ -16,7 +16,7 @@ jobs:
           distribution: 'zulu'
           cache: 'maven'
       - name: Start OceanBase container
-        uses: oceanbase/setup-oceanbase-ce@v1.0
+        uses: oceanbase/setup-oceanbase-ce@v1
         with:
           network: 'host'
       - name: Build and Test
