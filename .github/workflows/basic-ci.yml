@@ -46,7 +46,7 @@ jobs:
           python-version: "3.9"
       - name: Start OceanBase container
         if: ${{ inputs.with_oceanbase_container }}
-        uses: oceanbase/setup-oceanbase-ce@v1.0
+        uses: oceanbase/setup-oceanbase-ce@v1
         with:
           network: 'host'
       - name: Run sample for ${{ inputs.module }}
