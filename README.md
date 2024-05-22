@@ -21,7 +21,8 @@ We have created some issues on GitHub for some samples which are simple and good
 The following are samples that have been added or planned to be added in the near future:
 
 - application
-  - TODO: `hertzbeat` `seatunnel`
+  - `hertzbeat` `sveltekit`
+  - TODO: `seatunnel`
 - c
   - TODO: `obconnector-c`
 - c_plusplus
@@ -32,10 +33,8 @@ The following are samples that have been added or planned to be added in the nea
   - `go-sql-driver`
   - TODO: `gorm` `xorm` `obkv-table-client-go`
 - java
-  - `mybatis-plus` `mysql-connector-java` `oceanbase-client` `testcontainers-java`
-  - TODO: `mybatis` `hibernate` `spring-jdbc` `spring-data-jpa` `hikaricp` `flink-cdc` `oblogclient` `obkv-table-client-java`
-- javascript
-  - `sveltekit`
+  - `mybatis` `mybatis-plus` `mysql-connector-java` `oceanbase-client` `spring-jdbc` `springboot` `testcontainers-java`
+  - TODO: `hibernate` `spring-data-jpa` `hikaricp` `flink-cdc` `oblogclient` `obkv-table-client-java`
 - php
   - TODO: `mysqli` `pdo`
 - python
@@ -60,7 +59,7 @@ For a simple sample under the programming language category, the directory shoul
 
 If it's hard to use English for you, you can use your native language in the documentation, and we can improve it later.
 
-To ensure that the sample works, please add your module to the GitHub CI workflow. This project provides a standardized workflow for simple samples. For details, please refer to [basic-ci.yml](./.github/workflows/basic-ci.yml). You only need to add the following options to add your module to the `basic` job in [ci.yml](./.github/workflows/ci.yml):
+To ensure that the sample works, please add your module to the GitHub CI workflow. This project provides a standardized workflow for simple samples. For details, please refer to [basic-workflow.yml](./.github/workflows/basic-workflow.yml). You only need to add the following options to add your module to the `basic` job in [ci.yml](./.github/workflows/ci.yml):
 
 - `module.name`: the name of new module, should be same with the module directory name.
 - `module.language`: the programming language, should be same with the directory name under project root.

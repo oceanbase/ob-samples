@@ -16,7 +16,7 @@ This project demonstrates how to build a fullstack app using SvelteKit for the f
 2. Navigate to the project directory.
 
    ```
-   cd nodejs-sveltekit
+   cd applications/sveltekit
    ```
 
 3. Install the necessary dependencies.
@@ -25,7 +25,7 @@ This project demonstrates how to build a fullstack app using SvelteKit for the f
    npm i
    ```
 
-4. Rename the `.env.example` file to `.env` and update the values with your own OceanBase database credentials.
+4. Update the [db.js](./src/lib/db.js) with your own OceanBase database credentials.
 
 5. Start the development server.
    ```
