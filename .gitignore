@@ -46,3 +46,6 @@ build/
 ### JavaScript ###
 node_modules
 .svelte-kit
+
+### Python ###
+__pycache__
