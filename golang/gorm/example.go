@@ -41,6 +41,7 @@ func main() {
 		User:   username,
 		Passwd: password,
 		DBName: database,
+		Net:    "tcp",
 		//TODO: set parameters
 	}
 	dial := mysql.New(mysql.Config{DSNConfig: &conf})
