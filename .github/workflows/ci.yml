@@ -19,6 +19,9 @@ jobs:
           - name: 'go-sql-driver'
             language: 'golang'
             with_oceanbase_container: true
+          - name: 'gorm'
+            language: 'golang'
+            with_oceanbase_container: true
           - name: 'mysql-connector-java'
             language: 'java'
             with_oceanbase_container: true
