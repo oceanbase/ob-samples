@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 #
-#   Author  :   XueWeiHan
-#   E-mail  :   595666367@qq.com
 #   Date    :   2024-05-29 14:28
 #   Desc    :   SQLAlchemy 引擎和 OceanBase 基表定义
 from contextlib import contextmanager

@@ -7,7 +7,7 @@ from sqlalchemy.ext.declarative import declarative_base
 username = 'root'
 password = ''
 host = 'localhost'
-port = '3306'
+port = '2881'
 database = 'test'
 
 # 创建一个 SQLAlchemy 引擎，连接到 OceanBase 数据库

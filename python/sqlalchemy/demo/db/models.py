@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 #
-#   Author  :   XueWeiHan
-#   E-mail  :   595666367@qq.com
 #   Date    :   2024-05-29 14:28
 #   Desc    :   配置文件
 from sqlalchemy import Column, Integer, VARCHAR

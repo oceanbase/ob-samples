@@ -1,7 +1,5 @@
 # -*- coding:utf-8 -*-
 #
-#   Author  :   XueWeiHan
-#   E-mail  :   595666367@qq.com
 #   Date    :   2024-05-29 14:28
 #   Desc    :   运行入口
 from db.base import get_db

@@ -59,14 +59,13 @@ obd demo
 username = 'root' # 「账号管理」页面创建的账号
 password = '' # 「账号管理」页面创建的账号密码
 host = 'localhost' # 「数据库实例」页面开通的公网地址
-port = '3306' # 无需改动
+port = '2881' # OceanBase 端口号
 database = 'test' # 「数据库管理」页面创建的数据库
 ```
 
 修改代码中的连接信息，在命令行进入到 `python/sqlalchemy` 目录，直接执行 `python example.py` 运行示例代码，输出结果如下：
 
 ```
-<User(name=HelloGitHub, age=9)>
 <User(name=Alice, age=30)>
 <User(name=Bob, age=25)>
 <User(name=Alice, age=30)>
