@@ -36,15 +36,26 @@ type Product struct {
 
 func main() {
 	//dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s", username, password, host, port, database)
-	conf := stdmysql.Config{
-		Addr:   fmt.Sprintf("%s:%d", host, port),
-		User:   username,
-		Passwd: password,
-		DBName: database,
-		Net:    "tcp",
-		//TODO: set parameters
-	}
-	dial := mysql.New(mysql.Config{DSNConfig: &conf})
+	//conf := stdmysql.Config{
+	//	Addr:                 fmt.Sprintf("%s:%d", host, port),
+	//	User:                 username,
+	//	Passwd:               password,
+	//	DBName:               database,
+	//	Net:                  "tcp",
+	//	AllowNativePasswords: true,
+	//	CheckConnLiveness:    true,
+	//	//TODO: set parameters
+	//}
+	conf := stdmysql.NewConfig()
+	conf.Net = "tcp"
+
+	conf.Addr = fmt.Sprintf("%s:%d", host, port)
+	conf.User = username
+	conf.Passwd = password
+	conf.DBName = database
+	//TODO: set parameters
+
+	dial := mysql.New(mysql.Config{DSNConfig: conf})
 	db, err := gorm.Open(dial, &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
@@ -57,12 +68,10 @@ func main() {
 	insertProduct := &Product{Code: "D42", Price: 100}
 
 	db.Create(insertProduct)
-	fmt.Printf("insert ID: %d, Code: %s, Price: %d\n",
-		insertProduct.ID, insertProduct.Code, insertProduct.Price)
+	fmt.Printf("insert ID: %d, Code: %s, Price: %d\n", insertProduct.ID, insertProduct.Code, insertProduct.Price)
 
 	readProduct := &Product{}
 	db.First(&readProduct, "code = ?", "D42") // find product with code D42
 
-	fmt.Printf("read ID: %d, Code: %s, Price: %d\n",
-		readProduct.ID, readProduct.Code, readProduct.Price)
+	fmt.Printf("read ID: %d, Code: %s, Price: %d\n", readProduct.ID, readProduct.Code, readProduct.Price)
 }
