@@ -3,10 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
-	
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-	
+
 	stdmysql "github.com/go-sql-driver/mysql"
 )
 
@@ -24,7 +24,7 @@ func init() {
 	flag.StringVar(&username, "username", "", "username")
 	flag.StringVar(&password, "password", "", "password")
 	flag.StringVar(&database, "database", "", "database")
-	
+
 	flag.Parse()
 }
 
@@ -41,27 +41,27 @@ func main() {
 		User:   username,
 		Passwd: password,
 		DBName: database,
-		// parameters
+		//TODO: set parameters
 	}
 	dial := mysql.New(mysql.Config{DSNConfig: &conf})
 	db, err := gorm.Open(dial, &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}
-	
+
 	if err := db.AutoMigrate(&Product{}); err != nil {
 		panic(err)
 	}
-	
+
 	insertProduct := &Product{Code: "D42", Price: 100}
-	
+
 	db.Create(insertProduct)
 	fmt.Printf("insert ID: %d, Code: %s, Price: %d\n",
 		insertProduct.ID, insertProduct.Code, insertProduct.Price)
-	
+
 	readProduct := &Product{}
 	db.First(&readProduct, "code = ?", "D42") // find product with code D42
-	
+
 	fmt.Printf("read ID: %d, Code: %s, Price: %d\n",
 		readProduct.ID, readProduct.Code, readProduct.Price)
 }

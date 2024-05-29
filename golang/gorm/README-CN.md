@@ -1,4 +1,4 @@
-# Golang 连接 OceanBase 指南（使用 go-sql-driver/mysql）
+# Golang 连接 OceanBase 指南（使用 gorm.io/driver/mysql）
 
 [English](README.md) | 简体中文
 
@@ -8,12 +8,12 @@
 
 ## 快速开始
 
-您需要使用 `conf` 来创建数据库连接，详细信息请参考 [gorm.io/docs/](https://gorm.io/docs)。
+您需要使用代码中的 `conf` 来创建数据库连接，详细信息请参考 [gorm.io/docs/](https://gorm.io/docs)。
 
 以 [example.go](example.go) 代码为例
 
 
-修改代码中的连接信息，之后你就可以直接使用 run.sh 运行示例代码。
+修改run.sh代码中的连接信息, 如`host, port, username, password, database`，之后你就可以直接使用 run.sh 运行示例代码。
 
 ```bash
 sh run.sh
