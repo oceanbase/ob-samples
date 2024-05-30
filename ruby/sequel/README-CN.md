@@ -25,7 +25,7 @@ DB = Sequel.connect(
   host:     '127.0.0.1',
   port:     2881,
   user:     'root',
-  password: 'password',
+  password: '',
   database: 'test'
 )
 
