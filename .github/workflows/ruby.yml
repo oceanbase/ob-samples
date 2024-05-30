@@ -2,9 +2,13 @@ name: Ruby CI
 
 on:
   push:
-    paths: [ 'ruby/**' ]
+    paths:
+      - '.github/workflows/ruby.yml'
+      - 'ruby/**'
   pull_request:
-    paths: [ 'ruby/**' ]
+    paths:
+      - '.github/workflows/ruby.yml'
+      - 'ruby/**'
 
 jobs:
   ci:

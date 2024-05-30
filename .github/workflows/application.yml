@@ -2,9 +2,13 @@ name: Application CI
 
 on:
   push:
-    paths: [ 'applications/**' ]
+    paths:
+      - '.github/workflows/application.yml'
+      - 'applications/**'
   pull_request:
-    paths: [ 'applications/**' ]
+    paths:
+      - '.github/workflows/application.yml'
+      - 'applications/**'
 
 jobs:
   hertzbeat:

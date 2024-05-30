@@ -2,9 +2,13 @@ name: Java CI
 
 on:
   push:
-    paths: [ 'java/**' ]
+    paths:
+      - '.github/workflows/java.yml'
+      - 'java/**'
   pull_request:
-    paths: [ 'java/**' ]
+    paths:
+      - '.github/workflows/java.yml'
+      - 'java/**'
 
 jobs:
   ci:

@@ -2,9 +2,13 @@ name: Golang CI
 
 on:
   push:
-    paths: [ 'golang/**' ]
+    paths:
+      - '.github/workflows/golang.yml'
+      - 'golang/**'
   pull_request:
-    paths: [ 'golang/**' ]
+    paths:
+      - '.github/workflows/golang.yml'
+      - 'golang/**'
 
 jobs:
   ci:

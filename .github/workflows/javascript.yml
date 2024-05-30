@@ -2,9 +2,13 @@ name: JavaScript CI
 
 on:
   push:
-    paths: [ 'javascript/**' ]
+    paths:
+      - '.github/workflows/javascript.yml'
+      - 'javascript/**'
   pull_request:
-    paths: [ 'javascript/**' ]
+    paths:
+      - '.github/workflows/javascript.yml'
+      - 'javascript/**'
 
 jobs:
   ci:

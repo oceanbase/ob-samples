@@ -2,9 +2,13 @@ name: Python CI
 
 on:
   push:
-    paths: [ 'python/**' ]
+    paths:
+      - '.github/workflows/python.yml'
+      - 'python/**'
   pull_request:
-    paths: [ 'python/**' ]
+    paths:
+      - '.github/workflows/python.yml'
+      - 'python/**'
 
 jobs:
   ci:
