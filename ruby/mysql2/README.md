@@ -1,6 +1,6 @@
 # Ruby Connection OceanBase Guide (Mysql2)
 
-English | [简体中文](example.rb)
+English | [简体中文](README-CN.md)
 
 This article introduces how to connect to OceanBase database through mysql2 driver.
 
