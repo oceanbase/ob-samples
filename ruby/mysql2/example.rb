@@ -32,10 +32,10 @@ end
 
 if __FILE__ == $0
   connect_to_oceanbase(
-    '172.30.3.244',
+    '127.0.0.1',
     2881,
     'root',
-    'password',
+    '',
     'test'
   )
 end
