@@ -33,6 +33,7 @@ jobs:
             with_oceanbase_container: true
           - name: 'mysql-connector-python'
             language: 'python'
+            with_oceanbase_container: true
           - name: 'sqlalchemy'
             language: 'python'
             with_oceanbase_container: true
