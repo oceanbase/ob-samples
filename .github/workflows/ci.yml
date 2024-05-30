@@ -58,6 +58,9 @@ jobs:
           - name: 'sequel'
             language: 'ruby'
             with_oceanbase_container: true
+          - name: 'activerecord'
+            language: 'ruby'
+            with_oceanbase_container: true
     uses: ./.github/workflows/basic-workflow.yml
     with:
       module: ${{ matrix.module.name }}
