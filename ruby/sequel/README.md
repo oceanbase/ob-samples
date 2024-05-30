@@ -6,7 +6,7 @@ This article introduces how to connect to OceanBase database through mysql2 driv
 
 ## Quick Start
 
-Before starting, it is necessary to ensure that mysql2 is installed.
+Before starting, it is necessary to ensure that mysql2,sequel is installed.
 
 Installation command
 
