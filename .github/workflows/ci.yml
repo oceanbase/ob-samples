@@ -97,3 +97,17 @@ jobs:
         run: |
           cd applications/sveltekit
           pnpm install
+
+  application-mydata:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Set Go env
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.20'
+      - name: Build and run sample
+        run: |
+          cd applications/mydata
+          make && ./dist/mydata exp -h
