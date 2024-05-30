@@ -2,7 +2,7 @@
 
 English | [简体中文](README-CN.md)
 
-This article introduces how to connect to OceanBase database through mysql2 driver.
+This article introduces how to connect to OceanBase database through sequel.
 
 ## Quick Start
 
