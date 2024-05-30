@@ -64,5 +64,5 @@ end
 修改代码中的连接信息，之后你就可以直接使用命令行运行示例代码。
 
 ```bash
-ruby  example.rb
+sh run.sh
 ```
