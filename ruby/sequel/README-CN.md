@@ -16,7 +16,7 @@ gem install mysql2
 ```
 
 以 [example.rb](example.rb) 为例。
-
+```
 require 'sequel'
 
 # 连接到OceanBase数据库
