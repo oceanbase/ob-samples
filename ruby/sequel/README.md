@@ -1,4 +1,4 @@
-# Ruby Connection OceanBase Guide (Mysql2)
+# Ruby Connection OceanBase Guide (sequel)
 
 English | [简体中文](README-CN.md)
 
