@@ -23,11 +23,7 @@ LDFLAGS += -X "$(REPO)/internal/version.GitHash=$(GITHASH)"
 LDFLAGS += -X "$(REPO)/internal/version.GitBranch=$(GITREF)"
 LDFLAGS += -X "$(REPO)/internal/version.GoVersion=$(GOVER)"
 
-all: gen conv mydata
+all: mydata
 
 mydata:
-	CGO_CFLAGS=-I$(IBM_DB_HOME)/include CGO_LDFLAGS=-L$(IBM_DB_HOME)/lib $(GOBUILD) -ldflags '$(LDFLAGS)' -o ./dist/mydata main.go
-gen:
-	CGO_CFLAGS=-I$(IBM_DB_HOME)/include CGO_LDFLAGS=-L$(IBM_DB_HOME)/lib $(GOBUILD) -ldflags '$(LDFLAGS)' -o ./dist/gen cmd/other/genschema/gen.go
-conv:
-	CGO_CFLAGS=-I$(IBM_DB_HOME)/include CGO_LDFLAGS=-L$(IBM_DB_HOME)/lib $(GOBUILD) -ldflags '$(LDFLAGS)' -o ./dist/conv cmd/other/conv/conv.go
+	$(GOBUILD) -ldflags '$(LDFLAGS)' -o ./dist/mydata main.go

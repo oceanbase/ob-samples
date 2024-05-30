@@ -91,3 +91,11 @@ jobs:
         run: |
           cd applications/sveltekit
           pnpm install
+
+  application-mydata:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build and run sample
+        run: |
+          cd applications/mydata
+          make && ./dist/mydata exp -h
