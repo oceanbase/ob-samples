@@ -44,6 +44,12 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.9"
+      - name: Setup Ruby env
+        if: ${{ inputs.language == 'ruby' }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+          bundler-cache: true
       - name: Start OceanBase container
         if: ${{ inputs.with_oceanbase_container }}
         uses: oceanbase/setup-oceanbase-ce@v1
