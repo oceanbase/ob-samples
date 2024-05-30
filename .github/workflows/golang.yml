@@ -1,0 +1,26 @@
+name: Golang CI
+
+on:
+  push:
+    paths:
+      - '.github/workflows/golang.yml'
+      - 'golang/**'
+  pull_request:
+    paths:
+      - '.github/workflows/golang.yml'
+      - 'golang/**'
+
+jobs:
+  ci:
+    strategy:
+      matrix:
+        module:
+          - name: 'go-sql-driver'
+            with_oceanbase_container: true
+          - name: 'gorm'
+            with_oceanbase_container: true
+    uses: ./.github/workflows/basic-workflow.yml
+    with:
+      language: 'golang'
+      module: ${{ matrix.module.name }}
+      with_oceanbase_container: ${{ matrix.module.with_oceanbase_container }}

@@ -57,5 +57,5 @@ jobs:
           network: 'host'
       - name: Run sample for ${{ inputs.module }}
         run: |
-          cd ${{ inputs.language }}/${{ inputs.module }}
+          cd ${{ inputs.language }}/${{ inputs.module }} || exit
           sh run.sh

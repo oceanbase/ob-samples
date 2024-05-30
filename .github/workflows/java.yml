@@ -1,0 +1,36 @@
+name: Java CI
+
+on:
+  push:
+    paths:
+      - '.github/workflows/java.yml'
+      - 'java/**'
+  pull_request:
+    paths:
+      - '.github/workflows/java.yml'
+      - 'java/**'
+
+jobs:
+  ci:
+    strategy:
+      matrix:
+        module:
+          - name: 'mybatis'
+            with_oceanbase_container: true
+          - name: 'mybatis-plus'
+            with_oceanbase_container: false
+          - name: 'mysql-connector-java'
+            with_oceanbase_container: true
+          - name: 'oceanbase-client'
+            with_oceanbase_container: true
+          - name: 'spring-jdbc'
+            with_oceanbase_container: true
+          - name: 'springboot'
+            with_oceanbase_container: true
+          - name: 'testcontainers-java'
+            with_oceanbase_container: false
+    uses: ./.github/workflows/basic-workflow.yml
+    with:
+      language: 'java'
+      module: ${{ matrix.module.name }}
+      with_oceanbase_container: ${{ matrix.module.with_oceanbase_container }}

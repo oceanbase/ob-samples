@@ -1,0 +1,66 @@
+name: Application CI
+
+on:
+  push:
+    paths:
+      - '.github/workflows/application.yml'
+      - 'applications/**'
+  pull_request:
+    paths:
+      - '.github/workflows/application.yml'
+      - 'applications/**'
+
+jobs:
+  hertzbeat:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Java Env
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+          cache: 'maven'
+      - name: Start OceanBase container
+        uses: oceanbase/setup-oceanbase-ce@v1
+        with:
+          network: 'host'
+      - name: Build and Test
+        run: |
+          cd applications/hertzbeat
+          mvn clean test
+
+  sveltekit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Setup Node.js env
+        uses: actions/setup-node@v4
+        with:
+          node-version: 21
+          cache: 'npm'
+          cache-dependency-path: applications/sveltekit
+      - uses: pnpm/action-setup@v4
+        name: Setup pnpm
+        with:
+          version: 8
+          run_install: false
+      - name: Build and run sample
+        run: |
+          cd applications/sveltekit
+          pnpm install
+
+  mydata:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Set Go env
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.20'
+      - name: Build and run sample
+        run: |
+          cd applications/mydata
+          make && ./dist/mydata exp -h
