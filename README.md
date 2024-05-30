@@ -20,8 +20,8 @@ We have created some issues on GitHub for some samples which are simple and good
 
 The following are samples that have been added or planned to be added in the near future:
 
-- application
-  - `hertzbeat` `sveltekit`
+- applications
+  - `hertzbeat` `mydata` `sveltekit`
   - TODO: `seatunnel`
 - c
   - TODO: `obconnector-c`
@@ -40,6 +40,8 @@ The following are samples that have been added or planned to be added in the nea
 - python
   - `mysql-connector-python` `pymysql` `sqlalchemy`
   - TODO: `mysqlclient`
+- ruby
+  - `activerecord` `mysql2` `sequel`
 - rust
   - TODO: `sqlx` `rust-mysql-simple` `obkv-table-client-rust`
 
@@ -59,15 +61,14 @@ For a simple sample under the programming language category, the directory shoul
 
 If it's hard to use English for you, you can use your native language in the documentation, and we can improve it later.
 
-To ensure that the sample works, please add your module to the GitHub CI workflow. This project provides a standardized workflow for simple samples. For details, please refer to [basic-workflow.yml](./.github/workflows/basic-workflow.yml). You only need to add the following options to add your module to the `basic` job in [ci.yml](./.github/workflows/ci.yml):
+To ensure that the sample works, please add your module to the GitHub CI workflow. This project provides a standardized workflow for simple samples. For details, please refer to [basic-workflow.yml](./.github/workflows/basic-workflow.yml). You only need to add the following options to the yml of the corresponding language in the [.github/workflows](./.github/workflows) directory:
 
 - `module.name`: the name of new module, should be same with the module directory name.
-- `module.language`: the programming language, should be same with the directory name under project root.
 - `module.with_oceanbase_container`: whether to use a pre-deployed OceanBase container, optional, set 'true' by default. If it's 'true', you can connect to it using username 'root@sys' or 'root@test' with empty password at localhost.
 
 #### Complex samples
 
-For complex samples that need to be placed in the applications directory, the directory also needs to contain the `README.md` document. In addition, its project files, ci workflow, etc. will be added by yourself.
+For complex samples that need to be placed in the applications directory, the directory also needs to contain project files and `README.md` document. In addition, you also need to add ci workflow to [application.yml](./.github/workflows/application.yml).
 
 ## References
 
