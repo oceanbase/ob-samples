@@ -2,12 +2,12 @@ name: Ruby CI
 
 on:
   push:
-    branches: [ '**' ]
+    paths: [ 'ruby/**' ]
   pull_request:
     paths: [ 'ruby/**' ]
 
 jobs:
-  ruby:
+  ci:
     strategy:
       matrix:
         module:

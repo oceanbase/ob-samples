@@ -1,22 +1,20 @@
-name: Golang CI
+name: JavaScript CI
 
 on:
   push:
-    paths: [ 'golang/**' ]
+    paths: [ 'javascript/**' ]
   pull_request:
-    paths: [ 'golang/**' ]
+    paths: [ 'javascript/**' ]
 
 jobs:
   ci:
     strategy:
       matrix:
         module:
-          - name: 'go-sql-driver'
-            with_oceanbase_container: true
-          - name: 'gorm'
+          - name: 'mysql2'
             with_oceanbase_container: true
     uses: ./.github/workflows/basic-workflow.yml
     with:
-      language: 'golang'
+      language: 'javascript'
       module: ${{ matrix.module.name }}
       with_oceanbase_container: ${{ matrix.module.with_oceanbase_container }}

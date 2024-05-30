@@ -2,12 +2,12 @@ name: Java CI
 
 on:
   push:
-    branches: [ '**' ]
+    paths: [ 'java/**' ]
   pull_request:
     paths: [ 'java/**' ]
 
 jobs:
-  java:
+  ci:
     strategy:
       matrix:
         module:

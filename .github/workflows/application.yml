@@ -2,12 +2,12 @@ name: Application CI
 
 on:
   push:
-    branches: [ '**' ]
+    paths: [ 'applications/**' ]
   pull_request:
     paths: [ 'applications/**' ]
 
 jobs:
-  application-hertzbeat:
+  hertzbeat:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -26,7 +26,7 @@ jobs:
           cd applications/hertzbeat
           mvn clean test
 
-  application-sveltekit:
+  sveltekit:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -47,7 +47,7 @@ jobs:
           cd applications/sveltekit
           pnpm install
 
-  application-mydata:
+  mydata:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code

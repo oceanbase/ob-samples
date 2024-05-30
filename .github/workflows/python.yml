@@ -2,12 +2,12 @@ name: Python CI
 
 on:
   push:
-    branches: [ '**' ]
+    paths: [ 'python/**' ]
   pull_request:
     paths: [ 'python/**' ]
 
 jobs:
-  python:
+  ci:
     strategy:
       matrix:
         module:
