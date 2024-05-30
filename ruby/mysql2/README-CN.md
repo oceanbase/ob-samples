@@ -16,7 +16,7 @@ gem install mysql2
 
 以 [example.rb](example.rb) 为例。
 
-```python
+```
 require 'mysql2'
 
 def connect_to_oceanbase(host, port, username, password, database)
@@ -54,7 +54,7 @@ if __FILE__ == $0
     '127.0.0.1',
     2881,
     'root',
-    'password',
+    '',
     'test'
   )
 end
