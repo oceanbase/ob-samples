@@ -54,7 +54,7 @@ if __FILE__ == $0
     '127.0.0.1',
     2881,
     'root',
-    'password',
+    '',
     'test'
   )
 end
@@ -64,5 +64,5 @@ end
 Modify the connection information in the code, and then you can directly run the example code using the command line.
 
 ```bash
-ruby  example.rb
+sh run.sh
 ```
