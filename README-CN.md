@@ -30,16 +30,16 @@
 - c_sharp
   - TODO: `mysql-connector-net` `MySqlConnector`
 - golang
-  - `go-sql-driver`
-  - TODO: `gorm` `xorm` `obkv-table-client-go`
+  - `go-sql-driver` `gorm`
+  - TODO: `xorm` `obkv-table-client-go`
 - java
   - `mybatis` `mybatis-plus` `mysql-connector-java` `oceanbase-client` `spring-jdbc` `springboot` `testcontainers-java`
   - TODO: `hibernate` `spring-data-jpa` `hikaricp` `flink-cdc` `oblogclient` `obkv-table-client-java`
 - php
   - TODO: `mysqli` `pdo`
 - python
-  - `mysql-connector-python` `pymysql`
-  - TODO: `mysqlclient` `sqlalchemy`
+  - `mysql-connector-python` `pymysql` `sqlalchemy`
+  - TODO: `mysqlclient`
 - rust
   - TODO: `sqlx` `rust-mysql-simple` `obkv-table-client-rust`
 
