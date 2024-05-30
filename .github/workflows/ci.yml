@@ -37,6 +37,9 @@ jobs:
           - name: 'mysql-connector-python'
             language: 'python'
             with_oceanbase_container: true
+          - name: 'sqlalchemy'
+            language: 'python'
+            with_oceanbase_container: true
           - name: 'mybatis-plus'
             language: 'java'
             with_oceanbase_container: false
