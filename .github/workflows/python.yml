@@ -1,0 +1,24 @@
+name: Python CI
+
+on:
+  push:
+    branches: [ '**' ]
+  pull_request:
+    paths: [ 'python/**' ]
+
+jobs:
+  python:
+    strategy:
+      matrix:
+        module:
+          - name: 'mysql-connector-python'
+            with_oceanbase_container: true
+          - name: 'pymysql'
+            with_oceanbase_container: true
+          - name: 'sqlalchemy'
+            with_oceanbase_container: true
+    uses: ./.github/workflows/basic-workflow.yml
+    with:
+      language: 'python'
+      module: ${{ matrix.module.name }}
+      with_oceanbase_container: ${{ matrix.module.with_oceanbase_container }}

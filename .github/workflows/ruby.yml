@@ -1,0 +1,24 @@
+name: Ruby CI
+
+on:
+  push:
+    branches: [ '**' ]
+  pull_request:
+    paths: [ 'ruby/**' ]
+
+jobs:
+  ruby:
+    strategy:
+      matrix:
+        module:
+          - name: 'activerecord'
+            with_oceanbase_container: true
+          - name: 'mysql2'
+            with_oceanbase_container: true
+          - name: 'sequel'
+            with_oceanbase_container: true
+    uses: ./.github/workflows/basic-workflow.yml
+    with:
+      language: 'ruby'
+      module: ${{ matrix.module.name }}
+      with_oceanbase_container: ${{ matrix.module.with_oceanbase_container }}
