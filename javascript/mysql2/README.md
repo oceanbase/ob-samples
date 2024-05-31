@@ -19,35 +19,35 @@ npm install mysql2
 
 ```
 
-创建 [index.js](index.js) 文件
+create [index.js](index.js) file
 
 ```
 const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
-  host: '127.0.0.1',  // OceanBase服务器地址
-  port: 2881,            // OceanBase端口
-  user: 'root',          // 数据库用户名
-  password: '',  // 数据库密码
-  database: 'test'    // 数据库名称
+  host: '127.0.0.1',  // OceanBase address
+  port: 2881,            // OceanBase port
+  user: 'root',          // username
+  password: '',  // passwd
+  database: 'test'    // database
 });
 
-// 连接到数据库
+// Connection OceanBase server
 connection.connect(error => {
   if (error) {
-    return console.error('连接到OceanBase数据库失败: ' + error.message);
+    return console.error('Connection OceanBase faild: ' + error.message);
   }
 
-  console.log('成功连接到OceanBase数据库');
+  console.log('Connection OceanBase Successd');
 
-  // 这里可以执行其他数据库操作
+  // Other Database Operations
 
-  // 关闭连接
+  // Close Connection
   connection.end(err => {
     if (err) {
-      return console.error('关闭数据库连接失败: ' + err.message);
+      return console.error('Close Connection Faild: ' + err.message);
     }
-    console.log('关闭数据库连接成功');
+    console.log('Close Connection Successd');
   });
 });
 ```
