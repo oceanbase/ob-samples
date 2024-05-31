@@ -1,0 +1,24 @@
+name: JavaScript CI
+
+on:
+  push:
+    paths:
+      - '.github/workflows/javascript.yml'
+      - 'javascript/**'
+  pull_request:
+    paths:
+      - '.github/workflows/javascript.yml'
+      - 'javascript/**'
+
+jobs:
+  ci:
+    strategy:
+      matrix:
+        module:
+          - name: 'mysql2'
+            with_oceanbase_container: true
+    uses: ./.github/workflows/basic-workflow.yml
+    with:
+      language: 'javascript'
+      module: ${{ matrix.module.name }}
+      with_oceanbase_container: ${{ matrix.module.with_oceanbase_container }}
