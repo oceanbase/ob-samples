@@ -19,10 +19,10 @@ npm install mysql2
 
 ```
 
-创建 [example.js](example.js) 文件
+创建 [index.js](index.js) 文件
 
 ```
-onst mysql = require('mysql2');
+const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
   host: '127.0.0.1',  // OceanBase服务器地址
