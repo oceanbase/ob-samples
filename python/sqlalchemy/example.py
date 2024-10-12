@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+from urllib.parse import quote_plus
 from sqlalchemy import create_engine, Column, Integer, VARCHAR
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
@@ -12,7 +13,7 @@ database = 'test'
 
 # 创建一个 SQLAlchemy 引擎，连接到 OceanBase 数据库
 # 创建数据库连接字符串
-connection_string = f'mysql+pymysql://{username}:{password}@{host}:{port}/{database}'
+connection_string = f'mysql+pymysql://{username}:{quote_plus(password)}@{host}:{port}/{database}'
 # 创建SQLAlchemy引擎
 engine = create_engine(connection_string)
 
