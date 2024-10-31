@@ -17,6 +17,8 @@ jobs:
         module:
           - name: 'mysql2'
             with_oceanbase_container: true
+          - name: 'typeorm'
+            with_oceanbase_container: true
     uses: ./.github/workflows/basic-workflow.yml
     with:
       language: 'javascript'
