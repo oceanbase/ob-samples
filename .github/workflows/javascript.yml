@@ -17,9 +17,18 @@ jobs:
         module:
           - name: 'mysql2'
             with_oceanbase_container: true
+
           - name: 'prisma'
             with_oceanbase_container: true
             oceanbase_image_tag: '4.2.2'
+
+          - name: 'typeorm'
+            with_oceanbase_container: true
+ 
+          - name: 'drizzle'
+            with_oceanbase_container: true
+            oceanbase_image_tag: '4.2.3_BETA'
+
     uses: ./.github/workflows/basic-workflow.yml
     with:
       language: 'javascript'
