@@ -16,6 +16,10 @@ on:
         required: false
         description: 'Whether to use a pre-deployed OceanBase container in CI workflow.'
         default: true
+      oceanbase_image_tag:
+        type: string
+        required: false
+        description: 'The tag of OceanBase CE Docker image.'
 
 concurrency:
   group: basic-ci-${{ github.event.pull_request.number || github.ref }}-${{ inputs.module }}
@@ -43,7 +47,7 @@ jobs:
         if: ${{ inputs.language == 'python' }}
         uses: actions/setup-python@v4
         with:
-          python-version: "3.9"
+          python-version: '3.9'
       - name: Setup Ruby env
         if: ${{ inputs.language == 'ruby' }}
         uses: ruby/setup-ruby@v1
@@ -55,6 +59,7 @@ jobs:
         uses: oceanbase/setup-oceanbase-ce@v1
         with:
           network: 'host'
+          image_tag: ${{ inputs.oceanbase_image_tag || 'latest' }}
       - name: Run sample for ${{ inputs.module }}
         run: |
           cd ${{ inputs.language }}/${{ inputs.module }} || exit
