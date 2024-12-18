@@ -47,7 +47,7 @@ jobs:
         if: ${{ inputs.language == 'python' }}
         uses: actions/setup-python@v4
         with:
-          python-version: "3.9"
+          python-version: '3.9'
       - name: Setup Ruby env
         if: ${{ inputs.language == 'ruby' }}
         uses: ruby/setup-ruby@v1
