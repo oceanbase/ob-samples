@@ -18,6 +18,9 @@ jobs:
           - name: 'mysql2'
             with_oceanbase_container: true
 
+          - name: 'sequelize'
+            with_oceanbase_container: true
+
           - name: 'prisma'
             with_oceanbase_container: true
             oceanbase_image_tag: '4.2.2'
