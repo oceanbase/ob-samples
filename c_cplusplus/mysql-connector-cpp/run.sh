@@ -1,43 +1,24 @@
 #!/bin/bash
 
-# show environment info
-echo "=== Environment Info ==="
-echo "C++ compiler:"
-g++ --version
-
-echo "=== Package Info ==="
-echo "Checking installed packages..."
-dpkg -l | grep mysql
-dpkg -L libmysqlcppconn-dev
-
-echo "=== File Search ==="
-echo "Searching for MySQL files..."
-find /usr -name "*mysql*" 2>/dev/null
-find /usr -name "*.h" | grep -i mysql 2>/dev/null
-
-# set possible paths
+# find mysql connector c++ headers
+echo "Searching for MySQL Connector/C++ headers..."
 POSSIBLE_PATHS=(
-    "/usr/include/mysql-cppconn-8"
-    "/usr/include/mysql"
-    "/usr/include/mysql-cppconn-8/mysql"
     "/usr/include/mysql-cppconn-8/jdbc"
+    "/usr/include/mysql-cppconn-8"
+    "/usr/include/"
 )
 
-# check each possible path
+# find actual header file location
 for path in "${POSSIBLE_PATHS[@]}"; do
-    if [ -d "$path" ]; then
-        echo "Found directory: $path"
-        ls -la $path
-        if [ -f "$path/mysql/jdbc.h" ] || [ -f "$path/jdbc.h" ]; then
-            INCLUDE_PATH=$path
-            echo "Using include path: $INCLUDE_PATH"
-            break
-        fi
+    if [ -f "$path/cppconn/driver.h" ] || [ -f "$path/driver.h" ]; then
+        INCLUDE_PATH=$path
+        echo "Found headers in: $INCLUDE_PATH"
+        break
     fi
 done
 
 if [ -z "$INCLUDE_PATH" ]; then
-    echo "Error: Could not find MySQL Connector/C++ include path"
+    echo "Error: Could not find MySQL Connector/C++ headers"
     echo "Please check if libmysqlcppconn-dev is properly installed"
     echo "You can install it with: sudo apt-get install libmysqlcppconn-dev"
     exit 1

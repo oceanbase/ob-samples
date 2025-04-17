@@ -2,7 +2,12 @@
 #include <iostream>
 #include <memory>
 
-#include <mysql/jdbc.h>
+// MySQL Connector/C++ headers
+#include <cppconn/driver.h>
+#include <cppconn/connection.h>
+#include <cppconn/statement.h>
+#include <cppconn/resultset.h>
+#include <cppconn/exception.h>
 
 #define DEFAULT_URI "tcp://127.0.0.1:2881"
 #define EXAMPLE_USER "root@test"
@@ -17,11 +22,11 @@ int main(int argc, char *argv[]) {
         const string user(argc >= 3 ? argv[2] : EXAMPLE_USER);
         const string password(argc >= 4 ? argv[3] : EXAMPLE_PASSWORD);
         const string database(argc >= 5 ? argv[4] : EXAMPLE_DB);
-        sql::mysql::MySQL_Driver *driver = sql::mysql::get_mysql_driver_instance();
+        
+        sql::Driver *driver = get_driver_instance();
 
         cout << "Connected to OceanBase server..." << endl;
         unique_ptr< sql::Connection > con{driver->connect(url, user, password)};
-        
         
         con->setSchema(database);
         
@@ -45,7 +50,7 @@ int main(int argc, char *argv[]) {
         
         // Query data
         cout << "Querying data..." << endl;
-        std::unique_ptr< sql::ResultSet > res{stmt->executeQuery("SELECT * FROM `t_test`")};
+        unique_ptr< sql::ResultSet > res{stmt->executeQuery("SELECT * FROM `t_test`")};
         
         cout << "Query results:" << endl;
         while (res->next()) {
