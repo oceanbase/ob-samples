@@ -1,24 +1,40 @@
 #!/bin/bash
 
-# Usage: ./run.sh [url] [username] [password] [database]
-#   url:      database server URL (default: tcp://127.0.0.1:2881)
-#   username: database username (default: root@test)
-#   password: database password (default: "")
-#   database: database name (default: test)
+# environment info
+echo "=== Environment Info ==="
+echo "C++ compiler:"
+g++ --version
+echo "MySQL Connector/C++:"
+find /usr -name "jdbc.h" 2>/dev/null
 
-# Note: Parameters must be provided in order, from left to right.
-#       You cannot skip parameters in the middle.
-#       For example:
-#         Valid:   ./run.sh tcp://127.0.0.1:2881 root@test "" test
-#         Valid:   ./run.sh tcp://127.0.0.1:2881
-#         Invalid: ./run.sh tcp://127.0.0.1:2881 test  (skipping username and password)
-# All parameters are optional and will use default values if not provided
+# set include path
+INCLUDE_PATH="/usr/include/mysql-cppconn-8"
 
+# check if the path exists
+if [ ! -d "$INCLUDE_PATH/mysql" ]; then
+    echo "Warning: Default include path not found, searching alternatives..."
+    # search alternatives
+    ALTERNATIVE_PATH=$(find /usr -name "jdbc.h" 2>/dev/null | grep "mysql/jdbc.h" | xargs dirname | xargs dirname)
+    if [ -n "$ALTERNATIVE_PATH" ]; then
+        INCLUDE_PATH="$ALTERNATIVE_PATH"
+        echo "Using alternative path: $INCLUDE_PATH"
+    else
+        echo "Error: Could not find MySQL Connector/C++ include path"
+        exit 1
+    fi
+fi
 
+# compile
+echo "=== Compiling ==="
+echo "Using include path: $INCLUDE_PATH"
+g++ -std=c++11 -I$INCLUDE_PATH src/mysql_connector_test.cpp -o mysql_connector_test -lmysqlcppconn
 
-# Compile the program
-# Note: You may need to modify the include path (-I) based on your MySQL Connector/C++ installation
-g++ -std=c++11 -I/usr/include/mysql-cppconn-8 src/mysql_connector_test.cpp -o mysql_connector_test -lmysqlcppconn
+# check compile result
+if [ $? -ne 0 ]; then
+    echo "Compilation failed"
+    exit 1
+fi
 
-# Run the test 
+# run
+echo "=== Running ==="
 ./mysql_connector_test "$@"
