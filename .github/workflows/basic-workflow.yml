@@ -54,6 +54,16 @@ jobs:
         with:
           ruby-version: 3.1
           bundler-cache: true
+      - name: Setup C++ compiler
+        if: ${{ inputs.language == 'cpp' }}
+        uses: aminya/setup-cpp@v1
+        with:
+          compiler: gcc
+      - name: Install MySQL Connector/C++
+        if: ${{ inputs.language == 'cpp' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libmysqlcppconn-dev
       - name: Start OceanBase container
         if: ${{ inputs.with_oceanbase_container }}
         uses: oceanbase/setup-oceanbase-ce@v1
@@ -62,5 +72,9 @@ jobs:
           image_tag: ${{ inputs.oceanbase_image_tag || 'latest' }}
       - name: Run sample for ${{ inputs.module }}
         run: |
-          cd ${{ inputs.language }}/${{ inputs.module }} || exit
+          if [ "${{ inputs.language }}" = "cpp" ]; then
+            cd c_cplusplus/${{ inputs.module }} || exit
+          else
+            cd ${{ inputs.language }}/${{ inputs.module }} || exit
+          fi
           sh run.sh
