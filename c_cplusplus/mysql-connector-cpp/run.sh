@@ -1,15 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 
 # find mysql connector c++ headers
 echo "Searching for MySQL Connector/C++ headers..."
-POSSIBLE_PATHS=(
-    "/usr/include/mysql-cppconn-8/jdbc"
-    "/usr/include/mysql-cppconn-8"
-    "/usr/include/"
-)
+POSSIBLE_PATHS="/usr/include/mysql-cppconn-8/jdbc /usr/include/mysql-cppconn-8 /usr/include/"
 
 # find actual header file location
-for path in "${POSSIBLE_PATHS[@]}"; do
+for path in $POSSIBLE_PATHS; do
     if [ -f "$path/cppconn/driver.h" ] || [ -f "$path/driver.h" ]; then
         INCLUDE_PATH=$path
         echo "Found headers in: $INCLUDE_PATH"
