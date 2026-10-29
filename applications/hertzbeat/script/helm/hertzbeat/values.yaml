@@ -26,10 +26,8 @@ manager:
   account:
     username: "admin"
     password: "hertzbeat"
-  jwtSecretKey: "CyaFv0bwq2Eik0jdrKUtsA6bx3sDJeFV143R
-                 LnfKefTjsIfJLBa2YkhEqEGtcHDTNe4CU6+9
-                 8tVt4bisXQ13rbN0oxhUZR73M6EByXIO+SV5
-                 dKhaX0csgOCTlCxq20yhmUea6H6JIpSE2Rwp"
+  # Required: provide a unique random signing key in a private values file.
+  jwtSecretKey: ""
   podAnnotations: { }
   podSecurityContext: { }
   securityContext: { }  

@@ -1,5 +1,7 @@
 ##  docker-compose部署 HertzBeat+Postgresql+IoTDB 方案   
 
+> 启动前请先按[JWT 签名密钥配置](../README.md#configure-the-jwt-signing-key)生成私有 `jwt.env` 文件。密钥不再提供默认值。
+
 - 如果想自己本地快速部署的话，可以参考下面进行操作。
 
 > docker-compose 部署方案使用了 PostgreSQL + IoTDB 作为 Hertzbeat 依赖存储服务。   
@@ -22,7 +24,7 @@
 
 2. 进入部署脚本 docker-compose 目录, 执行  
 
-   `docker compose up -d`
+   `docker compose --env-file jwt.env up -d`
 
 
 ##### 开始探索HertzBeat   

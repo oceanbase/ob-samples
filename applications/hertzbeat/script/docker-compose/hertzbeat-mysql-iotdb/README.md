@@ -1,5 +1,7 @@
 ## docker-compose deployment HertzBeat+Mysql+IoTDB solution
 
+> Before starting, create the private `jwt.env` file described in [JWT signing key configuration](../README.md#configure-the-jwt-signing-key). No default key is provided.
+
 > The docker-compose deployment scheme uses Mysql + IoTDB as the dependent storage service of Hertzbeat.  
 > This solution will start three container services Mysql, IoTDB, HertzBeat
 
@@ -20,7 +22,7 @@
 
 2. Enter the deployment script docker-compose directory, execute
 
-   `docker compose up -d`
+   `docker compose --env-file jwt.env up -d`
 
 
 ##### Start exploring HertzBeat

@@ -15,6 +15,17 @@
 # specific language governing permissions and limitations
 # under the License.
 
+{{- $jwtSecret := required "manager.jwtSecretKey is required; set a unique random secret in a private values file" .Values.manager.jwtSecretKey -}}
+{{- if not (kindIs "string" $jwtSecret) -}}
+{{- fail "manager.jwtSecretKey must be a string" -}}
+{{- end -}}
+{{- $_ := required "manager.jwtSecretKey must not be blank" (trim $jwtSecret) -}}
+{{- /* Fingerprints of the two public legacy signing keys. Never accept either default. */ -}}
+{{- $legacyHashes := list "936f0ccb54f71860f92489142d579df73b6883c5e8a2d717bc27a89a4275996d" "0ad2a9aaa343676fd4d0dd09029054bedcecdd5506af5cad2fdce5087a656428" -}}
+{{- if has (sha256sum $jwtSecret) $legacyHashes -}}
+{{- fail "manager.jwtSecretKey matches a public default; replace it with a unique random secret" -}}
+{{- end -}}
+
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -63,7 +74,7 @@ data:
         - basic
         - jwt
       jwt:
-        secret: {{ .Values.manager.jwtSecretKey }}
+        secret: {{ $jwtSecret | quote }}
     
     ---
     spring:
