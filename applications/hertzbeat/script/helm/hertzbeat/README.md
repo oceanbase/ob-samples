@@ -44,6 +44,27 @@ helm repo update
 
 The following items can be set via `--set` flag during installation or configured by editing the `values.yaml` directly (need to download the chart first).
 
+#### Configure the JWT signing key
+
+`manager.jwtSecretKey` is required. Generate a unique key and store it in a private values file outside version control:
+
+```bash
+umask 077
+printf 'manager:\n  jwtSecretKey: "%s"\n' "$(openssl rand -hex 64)" > jwt-values.yaml
+```
+
+Keep this file private and reuse it for upgrades. The chart rejects empty keys and both public legacy defaults. It preserves custom keys exactly, including YAML special characters. The key is rendered into the manager ConfigMap, so restrict access to that ConfigMap and to Helm release data.
+
+For an existing release, generate a replacement if it used a public default. Pass the new file explicitly even with `--reuse-values`, then restart the manager pods so they load the replacement. Changing the signing key invalidates existing JWTs; users must sign in again.
+
+```bash
+# Run from this chart directory; the values file may be stored elsewhere.
+helm upgrade hertzbeat . --reuse-values -f /private/path/jwt-values.yaml
+kubectl rollout restart deployment -l app.kubernetes.io/instance=hertzbeat,component=manager
+```
+
+Use the actual release name in the selector and add `--namespace` to both commands when needed.
+
 #### Configure how to expose HertzBeat service
 
 - **Ingress**: The ingress controller must be installed in the Kubernetes cluster.
@@ -76,9 +97,9 @@ If HertzBeat is deployed behind the proxy, set it as the URL of proxy.
 
 ### Install the chart
 
-Install the HertzBeat helm chart with a release name `my-release`:
+Install this chart from its directory with the release name `hertzbeat`:
 ```bash
-helm install hertzbeat hertzbeat/hertzbeat
+helm install hertzbeat . -f /private/path/jwt-values.yaml
 ```
 
 ## Uninstallation
@@ -108,6 +129,7 @@ The following table lists the configurable parameters of the HertzBeat chart and
 | **Manager**                           |                                                                                                                                                                                                                 |                 |
 | `manager.account.username`            | The hertzbeat account username                                                                                                                                                                                  | `admin`         |
 | `manager.account.password`            | The hertzbeat account password                                                                                                                                                                                  | `hertzbeat`     |
+| `manager.jwtSecretKey`               | Required unique random JWT signing key; empty values and public legacy defaults are rejected.                                                                                                                   | `""`            |
 | `manager.resources`                   | The [resources] to allocate for container                                                                                                                                                                       | undefined       |
 | `manager.nodeSelector`                | Node labels for pod assignment                                                                                                                                                                                  | `{}`            |
 | `manager.tolerations`                 | Tolerations for pod assignment                                                                                                                                                                                  | `[]`            |
@@ -159,3 +181,13 @@ The following table lists the configurable parameters of the HertzBeat chart and
 [artifacthub]: https://artifacthub.io/
 [helm]: https://helm.sh/
 
+
+## JWT configuration regression tests
+
+With Helm 3+ and Python 3 with PyYAML installed, run from this chart directory:
+
+```bash
+python3 tests/test_jwt_secret.py -v
+```
+
+Set `HELM` to use a Helm executable outside `PATH`. The tests render the chart locally and do not contact a Kubernetes cluster.

@@ -67,6 +67,7 @@ services:
     hostname: hertzbeat
     restart: always
     environment:
+      SURENESS_JWT_SECRET: "${SURENESS_JWT_SECRET:?Set SURENESS_JWT_SECRET to a unique random signing key}"
       TZ: Asia/Shanghai
       LANG: zh_CN.UTF-8
     depends_on:

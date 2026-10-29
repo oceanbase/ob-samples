@@ -48,6 +48,12 @@ yarn start
 
 6. Access `http://localhost:4200` to start, account `admin/hertzbeat`
 
+## JWT 签名密钥
+
+使用本源码构建时，将 `sureness.jwt.secret` 留空，服务会在首次启动时生成随机签名密钥，写入元数据库，并在重启后复用。请保留元数据库；也可以通过 `sureness.jwt.secret` 或环境变量 `SURENESS_JWT_SECRET` 提供经过 Base64 编码的随机密钥。
+
+显式配置的自定义密钥优先生效，不会改动已存储密钥。配置为空或为旧默认值时，服务会复用非默认的已存储密钥；若存储为空或包含两个公开旧默认值之一，则生成替代密钥。密钥替换后，使用旧密钥签发的令牌会失效，受影响的用户需要重新登录。Helm 使用外部镜像，必须显式提供密钥，具体步骤见 [Chart 说明](script/helm/hertzbeat/README.md#configure-the-jwt-signing-key)。
+
 ## Custom Database Configuration
 
 ### Custom Local or Prod Env Configuration

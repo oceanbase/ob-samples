@@ -49,6 +49,12 @@ yarn start
 
 6. Access `http://localhost:4200` to start, account `admin/hertzbeat`
 
+## JWT signing key
+
+For builds from this source, leave `sureness.jwt.secret` empty to generate a random signing key on first startup. The key is stored in the metadata database and reused after restarts. Preserve that database to retain the key, or supply your own Base64-encoded random key through `sureness.jwt.secret` or `SURENESS_JWT_SECRET`.
+
+An explicit custom key takes precedence and leaves persisted key storage unchanged. With empty or legacy configuration, startup reuses a non-default stored key or generates a replacement for either public legacy default found in storage. Replacing a signing key invalidates its existing tokens, so affected users must sign in again. Helm deployments use an external image and require an explicit key; follow the [chart instructions](script/helm/hertzbeat/README.md#configure-the-jwt-signing-key).
+
 ## Custom Database Configuration
 
 ### Custom Local or Prod Env Configuration

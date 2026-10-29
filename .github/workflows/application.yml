@@ -11,6 +11,22 @@ on:
       - 'applications/**'
 
 jobs:
+  hertzbeat-jwt-config:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: azure/setup-helm@v4
+        with:
+          version: 'v3.16.4'
+      - name: Test JWT deployment configuration
+        run: |
+          python -m pip install PyYAML==6.0.2
+          python applications/hertzbeat/script/helm/hertzbeat/tests/test_jwt_secret.py -v
+          COMPOSE="docker compose" python applications/hertzbeat/script/docker-compose/tests/test_jwt_configuration.py -v
+
   hertzbeat:
     runs-on: ubuntu-latest
     steps:
